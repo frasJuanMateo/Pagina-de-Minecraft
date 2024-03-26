@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Minecraft</title>
+    <meta charset="UTF-8" /> <!--Define set de caracteres-->
+    <meta name="author" content="Juan Mateo Frasinelli / Franco Alejandro Pedrazzi Nemer"><!--Define autor de la pagina-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--Define el tamaño de la ventana-->
+    <meta name="description" content="Sitio web acerca de nuestro interes personal: Minecraft.">
+    <!--Define descripcion de la pagina-->
+    <link rel="icon" href="Chicken_Artwork.webp"> <!--Define el icono de la pagina-->
+
+    <style>
+        /*Fuentes custom*/
+        @font-face {
+            font-family: Minecraft;
+            src: url("Minecraft.otf");
+        }
+
+        @font-face {
+            font-family: Minecraft_Alt;
+            src: url("MinecraftTen-VGORe.otf");
+        }
+
+        /*Codigo de los diferentes cursores (y aclaracion del renderizado de imagen)*/
+        * {
+            cursor: url(images/customcursor.png), default;
+            image-rendering: pixelated;
+        }
+
+        a:hover,
+        button:hover,
+        input:hover {
+            cursor: url(images/customcursor_hand.png), pointer;
+        }
+
+        a:active,
+        button:active,
+        input:active {
+            cursor: url(images/customcursor_hand_grab.png), grabbing;
+        }
+
+        p:hover,
+        h1:hover,
+        h2:hover,
+        h3:hover,
+        h4:hover,
+        h5:hover,
+        h6:hover {
+            cursor: url(images/customcursor_beam.png), text;
+        }
+
+        /*Configuracion general de la pagina*/
+        body {
+            background-image: url(images/block/end_stone_bricks.png);
+            background-size: 160px 160px;
+            height: auto;
+            margin: auto;
+            font-family: Minecraft;
+        }
+
+        /*Estetica de los botones de reproduccion de la musica*/
+        .button {
+            opacity: 30%;
+            position: fixed;
+            width: 100px;
+            height: 100px;
+            border: none;
+            background: transparent;
+        }
+
+        .button:hover {
+            transition: opacity 0.3s ease;
+            opacity: 100%;
+        }
+
+        .button img {
+            width: 100px;
+            height: 100px;
+        }
+
+        #pause {
+            background-image: url(images/Pause_Button_Idle.png);
+            background-size: 100px;
+        }
+
+        #play {
+            background-image: url(images/Play_Button_Idle.png);
+            background-size: 100px;
+        }
+
+        #pause:active {
+            background-image: url(images/Pause_Button_Select.png);
+        }
+
+        #play:focus {
+            background-image: url(images/Play_Button_Select.png);
+            opacity: 100%;
+        }
+
+        #pause {
+            margin-left: 110px;
+        }
+
+        /*Configuracion de la cabezera*/
+        header {
+            background:
+                linear-gradient(rgba(0, 0, 0, 0.7),
+                    rgba(0, 0, 0, 0.7)),
+                url(images/block/blackstone.png);
+            background-size: 160px 160px;
+            border: 5px solid #000000;
+        }
+
+        /*Configuracion del titulo (en la cabezera)*/
+        #titleLogo {
+            margin-top: none;
+            text-align: center;
+            color: #FFFF55;
+            padding: 10px;
+        }
+
+        /*Estetica del contenedor de texto*/
+        #maincontent {
+            align-self: center;
+            /*display: flex;*/
+            text-align: center;
+            word-wrap: unset;
+            max-width: 1500px;
+            background-color: #C6C6C6;
+            height: auto;
+            margin: auto;
+            margin-top: 25px;
+            background-repeat: no-repeat;
+            text-overflow: clip;
+            padding: 5px;
+            border: 30px solid transparent;
+            border-image: url(images/borderResize1.png) 33% repeat round !important;
+        }
+
+        /*Estetica de los titulos (texto)*/
+        .title {
+            font-family: Minecraft_Alt !important;
+            font-size: 100px;
+        }
+
+        #maincontent p {
+            font-size: xx-large;
+        }
+
+        #maincontent img,
+        #maincontent iframe {
+            border: 5px solid #000000;
+            padding: 10px;
+            margin: 5px;
+        }
+
+        .nonBorderImage {
+            border: none !important;
+        }
+
+        /*Estetica de la NavBar de la cabezera*/
+        #links {
+            max-width: 2000px;
+            margin: auto;
+            margin-top: 50px;
+            margin-bottom: 50px;
+            align-content: center;
+            text-align: center;
+            align-self: center;
+            display: flex;
+            word-wrap: unset;
+            font-size: x-large;
+        }
+
+        #links a {
+            border: 30px solid transparent;
+            padding: 10px;
+            text-decoration: none;
+            color: #FFFFFF !important;
+        }
+
+        #links a:link {
+            color: #FFFFFF !important;
+            border-image: url(images/borderButtonIdle.png) 33% repeat round !important;
+            background-image: url(images/backgroundButtonIdle.png);
+            background-size: 20px;
+            background-repeat: repeat;
+        }
+
+        #links a:hover {
+            color: #FFFFFF !important;
+            border-image: url(images/borderButtonSelect.png) 33% repeat round !important;
+            background-image: url(images/backgroundButtonSelect.png);
+            background-size: 20px;
+            background-repeat: repeat;
+        }
+
+        #links a:active {
+            color: #FFFFFF !important;
+            border-image: url(images/borderButtonSelected.png) 33% repeat round !important;
+            background-image: url(images/backgroundButtonSelected.png);
+            background-size: 24px;
+            background-repeat: repeat;
+        }
+
+        /*Configuracion del footer*/
+        footer {
+            font-size: x-large;
+            text-align: center;
+        }
+    </style> <!--Codigo CSS de la pagina-->
+
+    <script>
+        //Script para reproducir la musica
+        let audio = new Audio('1-08. Minecraft.mp3');
+        let beingPlayed = false;
+        function music(button) {
+            if (button.id == "play" && beingPlayed == false) {
+                audio.currentTime = 0
+                audio.play();
+                console.log(button.id);
+                beingPlayed = true;
+            }
+            if (button.id == "pause" && beingPlayed == true) {
+                audio.pause();
+                console.log(button.id);
+                beingPlayed = false;
+            }
+        }
+    </script> <!--Codigo Javascript de la pagina-->
+
+</head>
+
+<body>
+    <button class="button" id="play" onclick="music(this);"></button> <!--Boton de reproducir-->
+    <button class="button" id="pause" onclick="music(this);"></button> <!--Boton de Pausar-->
+    <header> <!--Encabezado-->
+        <div id="titleLogo">
+            <a href="https://www.minecraft.net/"> <!--Logo del titulo (con un link a la pagina de Minecraft)-->
+                <img src="images/title.png">
+            </a>
+        </div>
+        <div id="links"> <!--NavBar a las diferentes paginas-->
+            <a href="main.html">Pagina Principal</a>
+            <br>
+            <a href="development.html">Historia de creacion de Juego</a>
+            <br>
+            <a href="linea-tiempo.html">Linea de Tiempo de Versiones (Java)</a>
+            <br>
+            <a href="popularity.html">¿Como se volvio famoso?</a>
+            <br>
+            <a href="2-verciones.html">Diferentes Ediciones</a>
+            <br>
+            <a href="Spinoff.html">Juegos Spinoff</a>
+        </div>
+    </header>
+
+    <section id="maincontent"> <!--Contenido Principal-->
+        <h1 class="title">...Como se creo?</h1>
+        <img src="images/MineCon-Promo-Image.jpg" height="75%" width="75%">
+        <p>
+            Minecraft es la creación del programador sueco Markus "Notch" Persson, quien anteriormente trabajó en las
+            desarrolladoras de videojuegos King y más tarde jAlbum. Antes de centrarse completamente en Minecraft, Notch
+            desarrolló algunos prototipos durante su tiempo libre, inspirado en juegos populares de la época. Entre los
+            prototipos se encontraban RubyDung, un juego de construcción de bases, e Infiniminer, un juego de minería
+            basado
+            en bloques. Creo que todos vemos cómo se estaban formando las ideas detrás de Minecraft.
+        </p>
+        <br>
+        <p>
+            La primera edición de Minecraft, llamada Java Edition, fue creada por Notch durante un fin de semana a
+            principios de mayo de 2009. El juego fue lanzado inicialmente al público el 17 de mayo en el foro TIGSource,
+            un
+            foro para desarrolladores de juegos independientes. Después de recibir comentarios de sus colegas, Notch
+            actualizó el juego, que hoy en día se llama la versión Clásica. Se lanzaron algunas actualizaciones más
+            durante
+            los siguientes meses, las versiones Indev e Infdev, antes de que se lanzara la primera gran actualización,
+            Alpha, el 30 de junio de 2010. Fue alrededor de esta época que Minecraft comenzó a ganar velocidad.
+        </p>
+        <img src="images/Xbox_Promo_Art.jpg" height="75%" width="75%">
+        <br>
+        <p>
+            Notch renunció a su trabajo diurno para enfocarse únicamente en Minecraft. Con el dinero ganado del juego,
+            fundó
+            la ahora legendaria compañía de videojuegos Mojang, junto con sus colegas anteriores Carl Manneh y Jakob
+            Porser.
+            En este momento, Minecraft estaba siendo constantemente actualizado y calibrado. Se agregaron nuevos
+            objetos,
+            bloques, criaturas, recursos, mecánicas de juego, y el muy querido Modo Supervivencia. El 30 de diciembre,
+            Minecraft ingresó a la fase Beta. En preparación para el lanzamiento completo, Mojang contrató nuevos
+            empleados
+            a medida que el juego y la cantidad de personas que lo jugaban crecían a un ritmo rápido.
+        </p>
+        <br>
+        <p>
+            La versión completa de Minecraft se lanzó el 18 de noviembre de 2011. Y fue un éxito inmediato. ¿No lo viste
+            venir, verdad?! A partir de este momento, Minecraft realmente solo iba en una dirección. Y esa dirección era
+            hacia arriba. Para centrarse en la dirección del juego y asumir un liderazgo más general, Notch renunció
+            como
+            Diseñador Principal y contrató a Jens "Jeb" Bergensten, quien tomó el control creativo total del juego.
+        </p>
+        <img src="images/Arbor-Day.webp">
+        <br>
+        <p>
+            A medida que crecía la base de jugadores, también lo hacía Mojang. Atar acuerdos con más socios y
+            desarrolladores era imprescindible para apoyar y ampliar los límites del cada vez mayor Minecraft. Durante
+            los
+            próximos años, salieron varias nuevas ediciones y actualizaciones, incluidas la "Actualización de
+            Aventuras", la
+            "Actualización Bastante Aterradora" y "La Actualización que Cambió el Mundo". Se agregaron diseños más
+            pulidos,
+            más tipos de criaturas, biomas, objetivos, objetos y mecánicas de juego. Uno de los mayores atractivos de
+            Minecraft era que estaba en constante cambio y actualización, con más cosas que hacer y experimentar. Nada
+            ha
+            cambiado hasta el día de hoy.
+        </p>
+        <br>
+        <p>
+            Después de todo el éxito e impacto de Minecraft en los corazones de tantos jugadores, Mojang y la propiedad
+            intelectual de Minecraft fueron comprados por Microsoft en 2017, por una cantidad casi récord. Fue sugerido
+            por
+            el propio Notch en Twitter, buscando una corporación para comprar sus acciones.
+        </p>
+        <img src="images/Ender_Dragon.webp">
+        <br>
+        <p>
+            Minecraft continuó desarrollándose y agregando más de literalmente todo. Combates contra jefes, un elemento
+            subterráneo mucho más grande, dimensiones y áreas adicionales. El juego fue introducido en varias nuevas
+            consolas y plataformas durante los años. Xbox, Playstation, Nintendo, la Edición Pocket para móviles.
+            Incluso la
+            realidad virtual tuvo una parte del pastel de Minecraft. Básicamente, si tienes una máquina electrónica de
+            cualquier tipo, puedes jugar el juego.
+        </p>
+        <br>
+        <a href="https://minecraft.wiki"><p>Link a la Wiki de Minecraft</p></a> <!--Link a la Wiki de Minecraft-->
+    </section>
+    <footer> <!--Footer-->
+        <p>&copy; ITR2024 | Pagina: Juan Mateo Frasinelli y Franco Alejandro Pedrazzi Nemer <br> contacto:
+            d46710280@alumnos.itr.edu.ar / d48457362@alumnos.itr.edu.ar</p>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,1352 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <title>Minecraft</title>
+    <meta charset="UTF-8" /> <!--Define set de caracteres-->
+    <meta name="author" content="Juan Mateo Frasinelli / Franco Alejandro Pedrazzi Nemer">
+    <!--Define autor de la pagina-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--Define el tamaño de la ventana-->
+    <meta name="description" content="Sitio web acerca de nuestro interes personal: Minecraft.">
+    <!--Define descripcion de la pagina-->
+    <link rel="icon" href="Chicken_Artwork.webp"> <!--icono de la pagina-->
+    <style>
+        @font-face {
+            font-family: Minecraft;
+            src: url("Minecraft.otf");
+        }
+
+        @font-face {
+            font-family: Minecraft_Alt;
+            src: url("MinecraftTen-VGORe.otf");
+        }
+
+        * {
+            cursor: url(images/customcursor.png), default;
+            image-rendering: pixelated;
+        }
+
+        a:hover,
+        button:hover,
+        input:hover {
+            cursor: url(images/customcursor_hand.png), pointer;
+        }
+
+        a:active,
+        button:active,
+        input:active {
+            cursor: url(images/customcursor_hand_grab.png), grabbing;
+        }
+
+        p:hover,
+        h1:hover,
+        h2:hover,
+        h3:hover,
+        h4:hover,
+        h5:hover,
+        h6:hover {
+            cursor: url(images/customcursor_beam.png), text;
+        }
+
+        body {
+            background-image: url(images/stone.png);
+            height: auto;
+            margin: auto;
+            font-family: Minecraft;
+        }
+
+        header {
+            background:
+                linear-gradient(rgba(0, 0, 0, 0.7),
+                    rgba(0, 0, 0, 0.7)),
+                url(images/stone.png);
+            border: 5px solid #000000;
+        }
+
+        #titleLogo {
+            margin-top: none;
+            text-align: center;
+            color: #FFFF55;
+            padding: 10px;
+        }
+
+        footer {
+            text-align: center;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 80%;
+
+        }
+
+        td {
+            padding: 10px;
+            /* Ajusta el valor según el espacio deseado */
+        }
+
+        #maincontent {
+            align-self: center;
+            /*display: flex;*/
+            text-align: center;
+            word-wrap: unset;
+            max-width: 1000px;
+            background-image: url(images/block/dark_oak_planks.png);
+            background-size: 20%;
+            height: auto;
+            margin: auto;
+            text-overflow: clip;
+        }
+
+        #subMaincontent {
+            align-self: center;
+            /*display: flex;*/
+            text-align: center;
+            word-wrap: unset;
+            max-width: 100px;
+            background-image: url(images/block/iron_block.png);
+            height: auto;
+            margin: auto;
+            text-overflow: clip;
+            background-size: 50%;
+        }
+
+        #arrow {
+            align-self: center;
+            /*display: flex;*/
+            text-align: center;
+            word-wrap: unset;
+            max-width: 200px;
+            background-image: url(images/block/iron_block.png);
+            height: auto;
+            margin: auto;
+            text-overflow: clip;
+            width: auto;
+            background-size: 50%;
+        }
+
+        #links {
+            max-width: 2000px;
+            margin: auto;
+            margin-top: 50px;
+            margin-bottom: 50px;
+            align-content: center;
+            text-align: center;
+            align-self: center;
+            display: flex;
+            word-wrap: unset;
+            font-size: x-large;
+        }
+
+        #links a {
+            border: 30px solid transparent;
+            padding: 10px;
+            text-decoration: none;
+            color: #FFFFFF !important;
+        }
+
+        a:link {
+            color: #FFFFFF !important;
+            border-image: url(images/borderButtonIdle.png) 33% repeat round !important;
+            background-image: url(images/backgroundButtonIdle.png);
+        }
+
+        a:hover {
+            color: #FFFFFF !important;
+            border-image: url(images/borderButtonSelect.png) 33% repeat round !important;
+            background-image: url(images/backgroundButtonSelect.png);
+        }
+
+        a:active {
+            color: #FFFFFF !important;
+            border-image: url(images/borderButtonSelected.png) 33% repeat round !important;
+            background-image: url(images/backgroundButtonSelected.png);
+        }
+
+        #maincontent a {
+            font-size: 100px;
+        }
+
+        .texto {
+            background-image: url(images/block/gold_block.png);
+            padding: 10px;
+            width: 80%;
+            background-size: 100%;
+            height: auto;
+            margin: auto;
+
+        }
+
+        .Textitulo {
+
+            background-image: url(images/block/diamond_block.png);
+            padding: 10px;
+            width: 80%;
+            background-size: 100%;
+            height: auto;
+            margin: auto;
+            font-family: Minecraft_Alt !important;
+            font-size: 50px;
+
+        }
+
+        .java {
+
+            color: black;
+            padding: 15px;
+            background:
+                linear-gradient(rgba(100, 0, 0, 0.5),
+                    rgba(100, 0, 0, 0.5)),
+                url(images/cartel.jpeg);
+            width: 50%;
+            position: relative;
+            left: 60px;
+        }
+
+        .bedrock {
+            padding: 15px;
+            color: black;
+            width: 50%;
+            background:
+                linear-gradient(rgba(0, 0, 100, 0.5),
+                    rgba(0, 0, 100, 0.5)),
+                url(images/cartel.jpeg);
+            position: relative;
+            left: 140px;
+        }
+
+        .Delete {
+            background-clip: content-box;
+        }
+    </style> <!--Codigo CSS de la pagina-->
+
+    <script> //javascript </script> <!--Codigo Javascript de la pagina-->
+
+</head>
+
+<body>
+    <header> <!--Encabezado-->
+        <div id="titleLogo">
+            <img src="images/title.png">
+        </div>
+        <div id="links">
+            <a href="main.html">Pagina Principal</a>
+            <br>
+            <a href="development.html">Historia de creacion de Juego</a>
+            <br>
+            <a href="linea-tiempo.html">Linea de Tiempo de Versiones (Java)</a>
+            <br>
+            <a href="popularity.html">¿Como se volvio famoso?</a>
+            <br>
+            <a href="2-verciones.html">Diferentes Ediciones</a>
+            <br>
+            <a href="Spinoff.html">Juegos Spinoff</a>
+        </div>
+    </header>
+    <div id="maincontent">
+        <br>
+        <img src="images/evolution.jfif" style="height: 75%; width: 75%;" alt="">
+        <br>
+        <br>
+        <h3 class="Textitulo"> Esta lugar les presentaremos una linea de tiempo con todas las verciones y los que
+            agregaron
+        </h3>
+        <div id="subMaincontent">
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+
+        </div>
+        <h3 class="Textitulo">Classic (Pre-Alpha)
+        </h3>
+        <h3 class="texto">Esta fue la primera versión de Minecraft, lanzada en mayo de 2009. Era una versión muy básica
+            del juego, con un mundo generado de forma aleatoria y limitadas opciones de construcción.
+        </h3>
+
+        <div id="subMaincontent">
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+
+        </div>
+        <h3 class="Textitulo">Minecraft Alpha y Beta
+        </h3>
+        <h3 class="texto">
+            Durante las fases beta y alfa de Minecraft, se realizaron varias actualizaciones que transformaron el juego.
+            Estas mejoras incluyeron la introducción de eventos especiales para vacaciones, nuevos elementos como tintes
+            <img src="images/ink.webp" style="height: 35px; width: 35px;"> y dispensadores<img
+                src="images/block/dispenser_front.png" style="height: 35px; width: 35px;">, características como
+            repetidores <img src="images/repetidor.webp" style="height: 35px; width: 35px;"> y camas <img
+                src="images/Bed.webp" style="height: 35px; width: 35px;">, la inclusión de lobos <img
+                src="images/lobo.webp" style="height: 35px; width: 35px;"> y mecánicas como dormir en camas para cambiar
+            el punto de spawn del jugador, estadísticas y logros, la llegada de mapas y puertas trampa, pistones <img
+                src="images/block/piston_side.png" style="height: 35px; width: 35px;"> y herramientas de tijeras<img
+                src="images/tijeras.webp" style="height: 35px; width: 35px;">, así como nuevos bloques, ítems y mobs
+            como Enderman<img src="images/EndermanFace.webp" style="height: 35px; width: 35px;">. Estas actualizaciones
+            fueron esenciales para mejorar la jugabilidad y ofrecer una experiencia más completa a los jugadores de
+            Minecraft. </h3>
+        <div id="subMaincontent">
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+
+        </div>
+
+        <h3 class="Textitulo">Minecraft 1.0 (Release) <br><img src="images/version_1_0.png"
+                style="height: 100px; width: 180px;">
+        </h3>
+        <h3 class="texto">La versión 1.0.0 de Minecraft, también conocida como la Actualización de Aventura (Parte 2),
+            fue lanzada el 18 de noviembre de 2011, marcando la liberación oficial del juego después de dos años y medio
+            de desarrollo. Incluyó características como elaboración de pociones <img src="images/Water_Bottle.webp"
+                style="height: 35px; width: 35px;">,encantamientos <img src="images/block/enchanting_table_side.png"
+                style="height: 35px; width: 35px;">, el End <img src="images/block/end_portal_frame_top.png"
+                style="height: 35px; width: 35px;">, modo hardcore <img src="images/Hardcore_Heart.svg"
+                style="height: 35px; width: 35px;">, reproducción de animales <img src="images/BabyPigNew.webp"
+                style="height: 35px; width: 35px;"> y más. Esta versión fue la última desarrollada por Notch antes de
+            ceder el cargo de desarrollo creativo a Jens Bergensten. Introdujo nuevos bloques como la Estantería <img
+                src="images/block/bookshelf.png" style="height: 35px; width: 35px;">,la Piedra del End <img
+                src="images/block/end_stone.png" style="height: 35px; width: 35px;">, nuevos objetos como Polvo de Blaze
+            <img src="images/Blaze_Powder.webp" style="height: 35px; width: 35px;"> y Melón Brillante <img
+                src="images/GlisteringMelonNew.webp" style="height: 35px; width: 35px;">, y nuevos mobs como el
+            Mooshroom Rojo <img src="images/MooshroomFace.webp" style="height: 35px; width: 35px;"> y el Magma Cube <img
+                src="images/Magma_Cube_Face.webp" style="height: 35px; width: 35px;">. Además, hubo cambios en la
+            generación de biomas, en el sistema de armaduras y en la mecánica de muerte del jugador. Fue una
+            actualización significativa que preparó el terreno para futuras expansiones del juego.
+        </h3>
+        <div id="subMaincontent">
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+
+        </div>
+        <h3 class="Textitulo">Minecraft 1.1 <br><img src="images/version_1_1.png" style="height: 100px; width: 90px;">
+        </h3>
+        <h3 class="texto">
+
+            La versión 1.1 de Minecraft, lanzada el 12 de enero de 2012, fue una actualización importante que introdujo
+            elementos como huevos de aparición <img src="images/version_1_1.png" style="height: 35px; width: 35px;">,
+            soporte para múltiples idiomas, el tipo de mundo Superflat y playas. Fue la primera actualización en usar
+            snapshots, agregar 56 idiomas y no introducir nuevos bloques. Además, fue la primera versión lanzada bajo la
+            dirección creativa de Jens Bergensten. La actualización también incluyó cambios en la generación de biomas,
+            la adición de nuevos tipos de mundo y mejoras en la mecánica de juego y generación de terreno. Se realizaron
+            correcciones de errores y se añadieron nuevas opciones de configuración para servidores.
+        </h3>
+        <div id="subMaincontent">
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+        </div>
+        <h3 class="Textitulo">Minecraft 1.2 <br><img src="images/version_1_2.png" style="height: 100px; width: 180px;">
+        </h3>
+        <h3 class="texto">
+            La versión 1.2 de Minecraft, lanzada el 1 de marzo de 2012, fue una actualización importante que aumentó el
+            límite de altura a 256 bloques, agregó ataques de zombis en aldeas, biomas de jungla, puentes de madera en
+            minas abandonadas y pozos en desiertos. También incluyó nuevos bloques e ítems como botellas de experiencia
+            <img src="images/Bottle_o'_Enchanting_JE1_BE1.webp" style="height: 35px; width: 35px;">, lámparas de
+            redstone <img src="images/block/redstone_lamp.png" style="height: 35px; width: 35px;">, cargas de fuego <img
+                src="images/Fire_Charge_JE1_BE1.webp" style="height: 35px; width: 35px;">y ladrillos de piedra cincelada
+            <img src="images/block/chiseled_stone_bricks.png" style="height: 35px; width: 35px;">, así como dos nuevos
+            mobs: golems de hierro <img src="images/Vg_face.webp" style="height: 35px; width: 35px;"> y ocelotes <img
+                src="images/OcelotFace.webp" style="height: 35px; width: 35px;">. Hubo cambios en la generación de
+            terreno, mecánicas de juego y ajustes en bloques y mobs existentes. Además, se realizaron correcciones de
+            errores y se implementaron nuevas opciones en la configuración del servidor.
+        </h3>
+        <div id="subMaincontent">
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+
+        </div>
+        <h3 class="Textitulo">Minecraft 1.3 <br><img src="images/version_1_3.png" style="height: 100px; width: 180px;">
+        </h3>
+        <h3 class="texto">La actualización 1.3 de Minecraft para Java Edition, lanzada el 1 de agosto de 2012, trajo
+            consigo importantes adiciones y mejoras al juego. Entre las novedades más destacadas se encuentran la
+            introducción del comercio con aldeanos <img src="images/Villagerhead.webp"
+                style="height: 35px; width: 35px;">, el modo aventura, nuevas estructuras generadas como pirámides en la
+            jungla <img src="images/jungle-pyramid.webp" style="height: 35px; width: 35px;"> y el desierto <img
+                src="images/desert-pyramid.webp" style="height: 35px; width: 35px;">, así como nuevos bloques e ítems
+            como esmeraldas <img src="images/EmeraldB.webp" style="height: 35px; width: 35px;">, cofres ender <img
+                src="images/Ender Chest.webp" style="height: 35px; width: 35px;">, libros <img src="images/BookNew.webp"
+                style="height: 35px; width: 35px;"> y plumas <img src="images/FeatherNew.webp"
+                style="height: 35px; width: 35px;">, entre otros.
+
+        </h3>
+        <div id="subMaincontent">
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+        </div>
+        <h3 class="texto">Además de estas adiciones, se realizaron cambios significativos en la mecánica de juego, como
+            la división del inventario creativo en secciones separadas, mejoras en la experiencia y el encantamiento
+            <img src="images/Enchanted_Iron_Pickaxe.webp" style="height: 35px; width: 35px;">, y la posibilidad de
+            realizar transacciones comerciales con aldeanos <img src="images/Villagerhead.webp"
+                style="height: 35px; width: 35px;"> utilizando esmeraldas <img src="images/EmeraldB.webp"
+                style="height: 35px; width: 35px;"> como moneda.
+
+        </h3>
+        <div id="subMaincontent">
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+        </div>
+        <h3 class="texto">La actualización también trajo consigo correcciones de errores y mejoras en la interfaz y el
+            rendimiento del juego, lo que contribuyó a una experiencia de juego más fluida y completa para los jugadores
+            de Minecraft Java Edition.
+
+        </h3>
+        <div id="subMaincontent">
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+
+        </div>
+        <h3 class="Textitulo">Minecraft 1.4 Pretty Scary <br><img src="images/version_1_4.png"
+                style="height: 100px; width: 180px;">
+        </h3>
+        <h3 class="texto">La actualización "Pretty Scary" de Minecraft Java Edition 1.4, lanzada el 25 de octubre de
+            2012, trajo una serie de cambios significativos al juego. Entre estos cambios se incluyen la introducción de
+            nuevos mobs como brujas <img src="images/WitchFace.webp" style="height: 35px; width: 35px;">, murciélagos
+            <img src="images/BatFace.webp" style="height: 35px; width: 35px;">, aldeanos zombis <img
+                src="images/ZombieVillagerFace.webp" style="height: 35px; width: 35px;"> y esqueletos Wither <img
+                src="images/WitherSkeletonHead.webp" style="height: 35px; width: 35px;">. También se añadieron cabezas
+            portátiles, un nuevo jefe llamado el Wither <img src="images/Wither_face.webp"
+                style="height: 35px; width: 35px;">, el bloque de comandos <img src="images/commandblock.jpg"
+                style="height: 35px; width: 35px;">, el yunque <img src="images/anvil.png"
+                style="height: 35px; width: 35px;">, la estrella del Nether <img src="images/Nether_Star.webp"
+                style="height: 35px; width: 35px;"> y nuevos alimentos como papas <img
+                src="images/Potato_TextureUpdate.webp" style="height: 35px; width: 35px;">, zanahorias <img
+                src="images/Carrot_Updated.webp" style="height: 35px; width: 35px;"> y pasteles de calabaza <img
+                src="images/PumpkinPieNew.webp" style="height: 35px; width: 35px;">. Además, se agregaron elementos de
+            decoración como marcos de objetos <img src="images/block/item_frame.png" style="height: 35px; width: 35px;">
+            y macetas <img src="images/block/flower_pot.png" style="height: 35px; width: 35px;">.
+        </h3>
+        <div id="subMaincontent">
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+        </div>
+        <h3 class="texto">El desarrollo de la actualización comenzó después del lanzamiento de la versión 1.3.1 en
+            agosto de 2012, y se lanzaron 15 snapshots para la versión 1.4 antes del lanzamiento oficial el 25 de
+            octubre de 2012. Hubo contratiempos debido a errores encontrados, lo que llevó a retrasar el lanzamiento por
+            un día. La versión 1.4.2 marcó la introducción oficial de la 1.4, con nuevas características como comandos,
+            mobs, bloques y elementos de juego.
+        </h3>
+
+        <div id="subMaincontent">
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+
+        </div>
+        <h3 class="Textitulo">Minecraft 1.5 Redstone <br><img src="images/version_1_5.png"
+                style="height: 100px; width: 180px;">
+        </h3>
+        <h3 class="texto">
+            La actualización Redstone (Java Edition 1.5) lanzada el 13 de marzo de 2013, introdujo nuevos bloques
+            relacionados con el redstone, como el comparador <img src="images/PoweredRedstoneComparatorNew.webp"
+                style="height: 35px; width: 35px;"> , tolva <img src="images/descarga.png"
+                style="height: 35px; width: 35px;"> y sensor de luz solar <img src="images/DaylightDetector.webp"
+                style="height: 35px; width: 35px;"> , junto con el bloque decorativo de cuarzo <img
+                src="images/block/quartz_block_bottom.png" style="height: 35px; width: 35px;">. También agregó un
+            sistema de marcadores, nuevos comandos y mejoras en la gestión de inventario. Hubo revisiones posteriores,
+            como la versión 1.5.1 que permitió combinar libros encantados <img src="images/Enchanted_Book.webp"
+                style="height: 35px; width: 35px;"> y la 1.5.2 que solucionó problemas de rendimiento.
+        </h3>
+        <div id="subMaincontent">
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+
+        </div>
+        <h3 class="Textitulo">Minecraft 1.6 Horse Update <br><img src="images/version_1_6.png"
+                style="height: 100px; width: 100px;">
+        </h3>
+        <h3 class="texto">
+
+            La actualización de caballos para Java Edition 1.6.1, lanzada el 1 de julio de 2013, introdujo nuevas
+            características como caballos <img src="images/version_1_6.png" style="height: 35px; width: 35px;">, correas
+            <img src="images/correa.png" style="height: 35px; width: 35px;">, bloques de carbón <img
+                src="images/block/coal_block.png" style="height: 35px; width: 35px;">, alfombras <img
+                src="images/White_Carpet.webp" style="height: 35px; width: 35px;"> y un nuevo lanzador. Durante el
+            desarrollo, se lanzaron 18 instantáneas, con un enfoque en correcciones de errores. La prepublicación 1.6 se
+            lanzó el 25 de junio de 2013, seguida de la prepublicación 1.6.1 el 28 de junio, antes del lanzamiento
+            final. Las adiciones notables incluyeron packs de recursos, atributos de objetos y entidades, nuevos efectos
+            de estado, comandos adicionales y ajustes en la mecánica de montar en mobs. Las revisiones posteriores
+            incluyeron zombies bebé <img src="images/ZombieFace.webp" style="height: 35px; width: 35px;"> y correcciones
+            de errores.
+        </h3>
+        <div id="subMaincontent">
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+
+        </div>
+        <h3 class="Textitulo">Minecraft 1.7 The Update that Changed the World <br><img src="images/version_1_7.png"
+                style="height: 100px; width: 180px;">
+        </h3>
+        <h3 class="texto">
+
+            La actualización que cambió el mundo, Java Edition 1.7.2, lanzada el 25 de octubre de 2013, introdujo un
+            nuevo generador de terreno, biomas, vidrios tintados <img src="images/block/blue_stained_glass.png"
+                style="height: 35px; width: 35px;">, peces <img src="images/fish.webp"
+                style="height: 35px; width: 35px;">, un sistema de pesca <img src="images/Fishing_Rod.webp"
+                style="height: 35px; width: 35px;">, flores <img src="images/PoppyNew.webp"
+                style="height: 35px; width: 35px;">, y más. También incluyó mejoras en biomas existentes, ajustes en la
+            generación de cuevas, nuevas opciones de personalización y desafíos.
+        </h3>
+        <div id="subMaincontent">
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+
+        </div>
+        <h3 class="Textitulo">Minecraft 1.8 Bountiful Update<br><img src="images/version_1_8.png"
+                style="height: 100px; width: 180px;">
+        </h3>
+        <h3 class="texto">
+
+            La Actualización Bountiful, Java Edition 1.8 lanzada el 2 de septiembre de 2014, introdujo numerosas
+            características para creadores de mapas y supervivencia. En el ámbito de mapmaking, se añadieron nuevos
+            gamerules, estadísticas, comandos y etiquetas NBT, así como la capacidad de personalizar modelos de bloques.
+            Para supervivencia, se agregaron nuevos bloques, mobs como guardianes <img src="images/Guardian.webp"
+                style="height: 35px; width: 35px;"> y conejos <img src="images/Big-rabbit-face.webp"
+                style="height: 35px; width: 35px;">, stands de armaduras <img src="images/Armor_Stand_JE2.webp"
+                style="height: 35px; width: 20px;">, un nuevo modo espectador, y mejoras en el sistema de encantamientos
+            y reparaciones, entre otros cambios. Además, se realizaron mejoras de rendimiento y ajustes en la interfaz
+            gráfica.
+        </h3>
+        <div id="subMaincontent">
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+
+        </div>
+        <h3 class="Textitulo">Minecraft 1.9 Combat Update<br><img src="images/version_1_9.png"
+                style="height: 100px; width: 180px;">
+        </h3>
+        <h3 class="texto">
+
+            La Actualización de Combate, Java Edition 1.9, fue lanzada el 29 de febrero de 2016. Introdujo un nuevo
+            sistema de combate y varias adiciones notables, como reiniciar la pelea contra el dragón del End <img
+                src="images/Enderdragon_Face.webp" style="height: 35px; width: 35px;">, islas generadas infinitamente en
+            el End, mano secundaria para el uso de dos objetos, escudos <img src="images/Shield_JE2_BE1.webp"
+                style="height: 35px; width: 17px;">, nuevas flechas <img src="images/Arrow.webp"
+                style="height: 35px; width: 35px;"> y efectos, entre otros cambios en la jugabilidad y la optimización
+            del rendimiento.
+        </h3>
+        <div id="subMaincontent">
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+
+        </div>
+        <h3 class="Textitulo">Minecraft 1.10 Frostburn Update<br><img src="images/version_1_10.png"
+                style="height: 100px; width: 180px;">
+        </h3>
+        <h3 class="texto">
+
+            La Actualización Frostburn (Java Edition 1.10) de Minecraft se lanzó el 8 de junio de 2016, incluyendo
+            características como variantes de esqueletos <img src="images/SkeletonFace.webp"
+                style="height: 35px; width: 35px;">/zombis <img src="images/ZombieFace.webp"
+                style="height: 35px; width: 35px;">, osos polares <img src="images/PolarBearFace.webp"
+                style="height: 35px; width: 35px;">, bloques de estructura y salto automático. El desarrollo comenzó
+            poco después de la Actualización de Combate 1.9, con pocos snapshots y prelanzamientos.
+        </h3>
+        <div id="subMaincontent">
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+
+        </div>
+        <h3 class="Textitulo">Minecraft 1.11 Exploration Update <br><img src="images/version_1_11.png"
+                style="height: 100px; width: 180px;">
+        </h3>
+        <h3 class="texto">La "Exploration Update" es una importante mejora de Minecraft Java Edition 1.11 lanzada en
+            noviembre de 2016. Añadió nuevas características como profesiones de aldeanos <img
+                src="images/Villagerhead.webp" style="height: 35px; width: 35px;">, partículas, reglas de juego y
+            criaturas como vindicadores <img src="images/EvokerFace.webp" style="height: 35px; width: 35px;">,
+            evocadores <img src="images/EvokerFace.webp" style="height: 35px; width: 35px;">, vex <img
+                src="images/VexFace.webp" style="height: 35px; width: 35px;"> y llamas <img
+                src="images/Big-llama-face.webp" style="height: 35px; width: 35px;">. También incluyó bloques nuevos,
+            ítems como la concha de shulker <img src="images/Shulker_Shell_JE2_BE2.webp"
+                style="height: 35px; width: 35px;"> y el tótem de inmortalidad <img
+                src="images/Totem_of_Undying_JE2_BE2.webp" style="height: 35px; width: 35px;">, y encantamientos de
+            maldición.
+
+        </h3>
+        <div id="subMaincontent">
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+        </div>
+        <h3 class="texto">Hubo cambios significativos como la eliminación de distinciones entre mayúsculas y minúsculas
+            en IDs, extensiones en la longitud de mensajes de chat y la posibilidad de usar ciertos ítems como
+            combustible. Versiones posteriores solucionaron errores y añadieron contenido adicional, demostrado en un
+            tráiler oficial de Mojang.
+        </h3>
+        <div id="subMaincontent">
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+
+        </div>
+        <h3 class="Textitulo">Minecraft 1.12 World of Color Update <br><img src="images/version_1_12.png"
+                style="height: 100px; width: 180px;">
+        </h3>
+        <h3 class="texto">
+            La "World of Color Update" es una significativa actualización de Minecraft Java Edition 1.12 lanzada el 7 de
+            junio de 2017. Esta versión se enfocó en añadir una variedad de elementos y características coloridas al
+            juego. Entre las adiciones destacadas se encuentran nuevos bloques como el concreto <img
+                src="images/block/red_concrete.png" style="height: 35px; width: 35px;"> y la terracota vidriada <img
+                src="images/block/terracotta.png" style="height: 35px; width: 35px;">, la capacidad de teñir camas <img
+                src="images/Bed.webp" style="height: 35px; width: 35px;"> y la inclusión de loros de múltiples colores
+            <img src="images/ParrotFace.webp" style="height: 35px; width: 35px;">. También se introdujeron funciones,
+            comandos adicionales, un narrador que lee en voz alta lo que se escribe en el chat, y la posibilidad de
+            guardar y cargar la barra de acceso rápido en modo Creativo. Además, se realizaron cambios en la paleta de
+            colores de varios bloques y se sustituyeron los logros por avances. Versiones posteriores solucionaron
+            problemas de seguridad y realizaron ajustes adicionales, destacando el cambio de nombre a "Minecraft: Java
+            Edition". Esta actualización proporcionó una experiencia visualmente más rica y mejoró la funcionalidad
+            general del juego.
+        </h3>
+        <div id="subMaincontent">
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+
+        </div>
+        <h3 class="Textitulo">Minecraft 1.13 Update Aquatic <br><img src="images/version_1_13.png"
+                style="height: 100px; width: 180px;">
+        </h3>
+        <h3 class="texto">
+            La "Update Aquatic" es una importante actualización de Minecraft lanzada en 2018 que se enfocó en
+            transformar los océanos del juego. Añadió numerosas criaturas acuáticas como delfines <img
+                src="images/DolphinHead.webp" style="height: 35px; width: 35px;">, tortugas <img
+                src="images/TurtleFace.webp" style="height: 35px; width: 35px;">, peces <img src="images/fish.webp"
+                style="height: 35px; width: 35px;"> y fantasmas <img src="images/phantom.png"
+                style="height: 35px; width: 35px;">, junto con nuevos bloques como coral <img
+                src="images/block/fire_coral_block.png" style="height: 35px; width: 35px;"> y hielo azul <img
+                src="images/block/blue_ice.png" style="height: 35px; width: 35px;">. También introdujo elementos como el
+            tridente <img src="images/Trident.webp" style="height: 35px; width: 35px;">y la membrana de fantasma <img
+                src="images/Phantom_Membrane.png" style="height: 35px; width: 35px;">, así como estructuras generadas
+            como naufragios y arrecifes de coral.
+
+        </h3>
+        <div id="subMaincontent">
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+        </div>
+        <h3 class="texto">Además de las adiciones, la actualización también trajo cambios significativos, como la mejora
+            en la generación de biomas oceánicos y la introducción de nuevos tipos de biomas. Se agregaron nuevos
+            comandos y opciones de personalización del mundo, como el modo Buffet y los paquetes de datos, y se
+            realizaron ajustes en mecánicas de juego como la flotación de objetos en el agua y la reparación del elytra
+            <img src="images/elytra.png" style="height: 35px; width: 35px;"> con membrana de fantasma.
+        </h3>
+
+        <div id="subMaincontent">
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+
+        </div>
+        <h3 class="Textitulo">Minecraft 1.14 Village & Pillage <br><img src="images/version_1_14.png"
+                style="height: 100px; width: 180px;">
+        </h3>
+        <h3 class="texto">La actualización "Village & Pillage" de Minecraft, lanzada en abril de 2019, se centró en
+            renovar los pueblos del juego y agregar nuevas amenazas y bloques. Introdujo características como los
+            campamentos, bambú <img src="images/block/bamboo_stage0.png" style="height: 35px; width: 35px;">, andamios,
+            nuevas flores <img src="images/PoppyNew.webp" style="height: 35px; width: 35px;"> y bloques de construcción
+            como el barril <img src="images/block/barrel_top.png" style="height: 35px; width: 35px;">, campana <img
+                src="images/block/bell_side.png" style="height: 35px; width: 35px;"> y horno de fundición <img
+                src="images/block/blast_furnace_front.png" style="height: 35px; width: 35px;">. También incluyó nuevas
+            criaturas como gatos <img src="images/OcelotFace.webp" style="height: 35px; width: 35px;">, pillagers <img
+                src="images/EvokerFace.webp" style="height: 35px; width: 35px;">, ravagers <img
+                src="images/RavagerFace.webp" style="height: 35px; width: 35px;">, pandas <img
+                src="images/PandaFace.webp" style="height: 35px; width: 35px;">, zorros <img src="images/FoxFace.webp"
+                style="height: 35px; width: 35px;"> y comerciantes errantes <img src="images/WanderingTraderFace.webp"
+                style="height: 35px; width: 35px;">.
+
+        </h3>
+        <div id="subMaincontent">
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+        </div>
+        <h3 class="texto"> Aparte de los nuevos elementos, la actualización también trajo cambios en la mecánica del
+            juego y correcciones de errores. Se añadieron bloques como la mesa de cartografía <img
+                src="images/block/cartography_table_side1.png" style="height: 35px; width: 35px;">, mesa de forja <img
+                src="images/block/smithing_table_side.png" style="height: 35px; width: 35px;"> y cierra <img
+                src="images/block/stonecutter_side.png" style="height: 35px; width: 35px;"> . Además, se incluyeron
+            nuevos patrones de pancartas, armas como la ballesta <img src="images/Crossbow.png"
+                style="height: 35px; width: 35px;"> y pociones como el guiso sospechoso <img
+                src="images/Water_Bottle.webp" style="height: 35px; width: 35px;">, junto con mejoras en la generación
+            de aldeas y la inteligencia artificial de los aldeanos <img src="images/Villagerhead.webp"
+                style="height: 35px; width: 35px;">.
+
+
+        </h3>
+
+        <div id="subMaincontent">
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+
+        </div>
+        <h3 class="Textitulo">Minecraft 1.15 Buzzy Bees <br><img src="images/version_1_15.png"
+                style="height: 100px; width: 180px;">
+        </h3>
+        <h3 class="texto">La actualización "Buzzy Bees" de Minecraft se lanzó el 10 de diciembre de 2019 para las
+            ediciones Java y Bedrock. Esta importante actualización se centró en las abejas <img
+                src="images/BeeFace.webp" style="height: 35px; width: 35px;"> y elementos relacionados, como los panales
+            <img src="images/block/beehive.png" style="height: 35px; width: 35px;"> y bloques de miel <img
+                src="images/honey_block.png" style="height: 35px; width: 35px;">, así como nuevos ítems como botellas de
+            miel <img src="images/Honey_Bottle_JE1_BE2.webp" style="height: 35px; width: 35px;"> y panal <img
+                src="images/Honeycomb_JE2_BE2.webp" style="height: 35px; width: 35px;">. Las abejas <img
+                src="images/BeeFace.webp" style="height: 35px; width: 35px;"> , una nueva adición, pueden polinizar
+            cultivos, atacar si se las provoca y morir poco después, y tienen una interacción única en el juego. Además,
+            se realizaron correcciones de errores y mejoras en las ediciones Java y Bedrock con revisiones posteriores,
+            brindando una experiencia más completa y pulida a los jugadores.
+        </h3>
+        <div id="subMaincontent">
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+
+        </div>
+        <h3 class="Textitulo">Minecraft 1.16 Nether Update <br><img src="images/version_1_16.png"
+                style="height: 100px; width: 180px;">
+        </h3>
+        <h3 class="texto">La actualización "Nether Update" de Minecraft se lanzó el 23 de junio de 2020 para las
+            ediciones Java y Bedrock, y el 2 de noviembre de 2021 para la Education Edition. Esta actualización
+            importante se centra en revolucionar el Nether, agregando nuevas características como biomas, bloques y
+            criaturas. Algunas de las adiciones notables incluyen bloques como el fuego de alma <img
+                src="images/Blue_Fire.gif" style="height: 35px; width: 35px; ">, el hongo carmesí <img
+                src="images/mushroom N red.png" style="height: 35px; width: 35px; "> y retorcido <img
+                src="images/mushroom N blue.png" style="height: 35px; width: 35px; ">, y el ladrillo de cuarzo <img
+                src="images/block/chiseled_quartz_block.png" style="height: 35px; width: 35px; ">, junto con nuevos
+            ítems como el fragmento <img src="images/Netherite_Scrap_JE2_BE1.webp" style="height: 35px; width: 35px; ">
+            y lingote de Netherite <img src="images/Netherite_Ingot_JE1_BE2.webp" style="height: 35px; width: 35px; ">,
+            herramientas y armaduras mejoradas <img src="images/Netherite_Sword_JE2_BE2.webp"
+                style="height: 35px; width: 35px; ">, y mobs como los piglins <img src="images/PiglinFace.webp"
+                style="height: 35px; width: 35px; ">, striders <img src="images/StriderFace.webp"
+                style="height: 35px; width: 35px; ">, zoglins <img src="images/ZoglinFace.webp"
+                style="height: 35px; width: 35px; "> y hoglins <img src="images/HoglinFace.webp"
+                style="height: 35px; width: 35px; ">.
+        </h3>
+        <div id="subMaincontent">
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+        </div>
+        <h3 class="texto">La actualización "Nether Update" también introdujo nuevas estructuras generadas, como los
+            restos de bastión, pilares de basalto, hongos gigantes, portales arruinados y fósiles del Nether, además de
+            cuatro biomas distintos: valles de arena de almas, bosque carmesí, bosque retorcido y deltas de basalto.
+            Asimismo, se añadieron nuevas melodías al juego a través del álbum "Minecraft: Nether Update (Original Game
+            Soundtrack)" compuesto por Lena Raine, que complementa la experiencia en este renovado y peligroso mundo del
+            Nether.
+        </h3>
+
+        <div id="subMaincontent">
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+        </div>
+        <h3 class="Textitulo">Minecraft 1.17 Caves & Cliffs: Part I <br><img src="images/version_1_17.png"
+                style="height: 100px; width: 180px;">
+        </h3>
+        <h3 class="texto">La versión 1.17 de Minecraft trae una amplia gama de características nuevas y mejoras
+            destacadas. Entre estas se incluyen la introducción de bloques y elementos en las cuevas y acantilados, como
+            la piedra oscura <img src="images/deepslate.jpeg" style="height: 35px; width: 35px; ">, cristales de
+            amatista <img src="images/Amethyst_Shard_JE2_BE1.webp" style="height: 35px; width: 35px; ">, y bloques de
+            cobre <img src="images/copper_block.webp" style="height: 35px; width: 35px; ">. Además, se agregan nuevos
+            mobs como las cabras <img src="images/deepslate.jpeg" style="height: 35px; width: 35px; ">, ajolotes <img
+                src="images/AxolotlFace.webp" style="height: 35px; width: 35px; "> y el calamar brillante <img
+                src="images/GlowSquidFace.webp" style="height: 35px; width: 35px; ">.
+        </h3>
+        <div id="subMaincontent">
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+        </div>
+        <h3 class="texto">Otra parte importante de esta actualización son los nuevos bloques como los de musgo <img
+                src="images/moss_Block.jpg" style="height: 35px; width: 35px; "> y azalea <img src="images/azalea.png"
+                style="height: 35px; width: 35px; ">, junto con la inclusión de objetos como los telescopios <img
+                src="images/Spyglass_29_JE3_BE1.webp" style="height: 35px; width: 35px; "> y pararrayos <img
+                src="images/Lightning_Rod_29_pre-release.webp" style="height: 35px; width: 35px; ">. Además, se mejoran
+            aspectos técnicos como la generación de mundo con cuevas grandes y biomas variados, así como ajustes en la
+            minería y la adición de recursos como la amatista <img src="images/Amethyst_Shard_JE2_BE1.webp"
+                style="height: 35px; width: 35px; "> y el cobre <img src="images/Copper_Ingot_JE2_BE1.webp"
+                style="height: 35px; width: 35px; ">.
+
+        </h3>
+
+        <div id="subMaincontent">
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+        </div>
+        <h3 class="Textitulo">Minecraft 1.18 Caves & Cliffs: Part II <br><img src="images/version_1_18.png"
+                style="height: 100px; width: 180px;">
+        </h3>
+        <h3 class="texto">La actualización 1.18 de Minecraft Edición Java, también conocida como Caves & Cliffs: Parte
+            II, fue lanzada el 30 de noviembre de 2021. Esta actualización trajo consigo importantes cambios y adiciones
+            al juego. Se renovaron por completo las cuevas, se aumentó la altura de las montañas y se añadieron nuevos
+            biomas. También se introdujo un nuevo disco de música <img src="images/Music_Disc_13_JE1_BE1.png"
+                style="height: 35px; width: 35px; ">, mejoras en la generación del mundo, opciones de comando y
+            jugabilidad, así como mejoras en el rendimiento y ajustes en la generación de mundos. En resumen, la
+            actualización 1.18 trajo una experiencia de juego renovada y emocionante para los jugadores de Minecraft
+            Edición Java.
+
+        </h3>
+
+
+        <div id="subMaincontent">
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+        </div>
+        <h3 class="Textitulo">Minecraft 1.19 The Wild Update <br><img src="images/version_1_19.png"
+                style="height: 100px; width: 180px;">
+        </h3>
+        <h3 class="texto">Se agregaron nuevos biomas fríos y cálidos para la aparición de ranas <img
+                src="images/FrogFace.webp" style="height: 35px; width: 35px; "> en diferentes entornos. Los strongholds
+            ahora están influenciados por varios biomas, y se ajustaron los biomas en relación con la generación de agua
+            en mapas. También se añadieron etiquetas para controlar la aparición de patrullas, comerciantes errantes
+            <img src="images/WanderingTraderFace.webp" style="height: 35px; width: 35px; "> y asedios zombis <img
+                src="images/ZombieFace.webp" style="height: 35px; width: 35px; "> en biomas específicos, así como
+            etiquetas para estructuras, mundos planos y tipos de mundo en la interfaz de usuario.</h3>
+        <div id="subMaincontent">
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+        </div>
+        <h3 class="texto">Hubo ajustes en las texturas y comportamientos de varios bloques como el Stand de pociones
+            <img src="images/block/brewing_stand.png" style="height: 35px; width: 35px; ">, Vaina de cacao <img
+                src="images/block/cocoa_stage2.png" style="height: 35px; width: 35px; "> y Puerta del End <img
+                src="images/block/end_portal_frame_top.png" style="height: 35px; width: 35px; ">. Se realizaron cambios
+            en la apariencia y funcionalidad de objetos como Botes, Escudos <img src="images/Shield_JE2_BE1.webp"
+                style="height: 35px; width: 20px; "> y Andamios. Además, se modificaron modelos y texturas para
+            entidades como Aldeanos <img src="images/Villagerhead.webp" style="height: 35px; width: 35px; ">, Vagabundos
+            <img src="images/Villagerhead.webp" style="height: 35px; width: 35px; "> y Animales como Cabras <img
+                src="images/GoatFace.webp" style="height: 35px; width: 35px; "> y Llamas <img
+                src="images/Big-llama-face.webp" style="height: 35px; width: 35px; ">. También se hicieron ajustes en
+            puntos de interés y eventos en el juego.</h3>
+        <div id="subMaincontent">
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+        </div>
+        <h3 class="texto">Se actualizaron los formatos de archivo para paquetes de datos y paquetes de recursos. Se
+            ajustaron los avances del juego y la forma en que se desencadenan algunos eventos. Hubo mejoras en la
+            visualización de HUD, menús y opciones del juego, y se actualizó la biblioteca LWJGL a la versión 3.3.1.
+            También se realizaron modificaciones en las ubicaciones y condiciones para reproducir música en el juego, y
+            se hicieron ajustes en partículas, tipos de puntos de interés y predicciones para una experiencia de juego
+            más coherente.</h3>
+        <div id="subMaincontent">
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+        </div>
+        <h3 class="Textitulo">Minecraft 1.20 Trails & Tales <br><img src="images/version_1_20.png"
+                style="height: 100px; width: 180px;">
+        </h3>
+        <h3 class="texto">La actualización 1.20 de Minecraft trae cambios significativos en la generación del mundo,
+            añadiendo elementos a estructuras como Ancient City y Desert Pyramid <img src="images/desert-pyramid.webp"
+                style="height: 35px; width: 35px; ">. También mejora los efectos visuales de pociones y la Mesa de
+            Herrería para nuevas actualizaciones de equipo.
+        </h3>
+        <div id="subMaincontent">
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+        </div>
+        <h3 class="texto">La actualización incluye nuevos mobs como Camels <img src="images/CamelFace.webp"
+                style="height: 35px; width: 35px; ">, Sniffers <img src="images/SnifferFace.webp"
+                style="height: 35px; width: 35px; "> y Sentry Armor Trim, además del Elder Guardian que suelta Tide
+            Armor Trim <img src="images/Sentry_Armor_Trim_Smithing_Template_JE2_BE2.webp"
+                style="height: 35px; width: 35px; ">. También mejora la estabilidad técnica y la compatibilidad del
+            juego, añadiendo funciones y eventos para desarrolladores y mejoras visuales en la pantalla de título y
+            biomas.
+        </h3>
+        <div id="subMaincontent">
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+
+        </div>
+        <div id="arrow" style="width:200px ;"><br><br><br><br></div>
+        <div id="arrow" style="width:150px ;"><br><br><br></div>
+        <div id="arrow" style="width:100px ;"><br><br><br></div>
+        <div id="arrow" style="width:50px ;"><br><br></div>
+    </div>
+    <footer> <!--Footer-->
+        <p>&copy; ITR2024 | Pagina: Juan Mateo Frasinelli y Franco Alejandro Pedrazzi Nemer <br> contacto:
+            d46710280@alumnos.itr.edu.ar / d48457362@alumnos.itr.edu.ar</p>
+    </footer>
+</body>
+
+</html>

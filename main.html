@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Minecraft</title>
+    <meta charset="UTF-8" /> <!--Define set de caracteres-->
+    <meta name="author" content="Juan Mateo Frasinelli / Franco Alejandro Pedrazzi Nemer">     <!--Define autor de la pagina-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--Define el tamaño de la ventana-->
+    <meta name="description" content="Sitio web acerca de nuestro interes personal: Minecraft.">
+    <!--Define descripcion de la pagina-->
+    <link rel="icon" href="Chicken_Artwork.webp"> <!--Define el icono de la pagina-->
+
+    <style>
+        /*Fuentes custom*/
+        @font-face {
+            font-family: Minecraft;
+            src: url("Minecraft.otf");
+        }
+
+        @font-face {
+            font-family: Minecraft_Alt;
+            src: url("MinecraftTen-VGORe.otf");
+        }
+
+        /*Codigo de los diferentes cursores (y aclaracion del renderizado de imagen)*/
+        * {
+            cursor: url(images/customcursor.png), default;
+            image-rendering: pixelated;
+        }
+
+        a:hover,
+        button:hover,
+        input:hover {
+            cursor: url(images/customcursor_hand.png), pointer;
+        }
+
+        a:active,
+        button:active,
+        input:active {
+            cursor: url(images/customcursor_hand_grab.png), grabbing;
+        }
+
+        p:hover,
+        h1:hover,
+        h2:hover,
+        h3:hover,
+        h4:hover,
+        h5:hover,
+        h6:hover {
+            cursor: url(images/customcursor_beam.png), text;
+        }
+
+        /*Configuracion general de la pagina*/
+        body {
+            background-image: url(images/block/stone.png);
+            background-size: 160px 160px;
+            height: auto;
+            margin: auto;
+            font-family: Minecraft;
+        }
+
+        /*Estetica de los botones de reproduccion de la musica*/
+        .button {
+            position: fixed;
+            width: 100px;
+            height: 100px;
+            opacity: 30%;
+            border: none;
+            background: transparent;
+        }
+
+        .button:hover {
+            transition: opacity 0.3s ease;
+            opacity: 100%;
+        }
+
+        .button img {
+            width: 100px;
+            height: 100px;
+        }
+
+        #pause {
+            background-image: url(images/Pause_Button_Idle.png);
+            background-size: 100px;
+            margin-left: 110px;
+        }
+
+        #play {
+            background-image: url(images/Play_Button_Idle.png);
+            background-size: 100px;
+        }
+
+        #pause:active {
+            background-image: url(images/Pause_Button_Select.png);
+        }
+
+        #play:focus {
+            background-image: url(images/Play_Button_Select.png);
+            opacity: 100%;
+        }
+
+        /*Configuracion de la cabezera*/
+        header {
+            background:
+                linear-gradient(rgba(0, 0, 0, 0.7),
+                    rgba(0, 0, 0, 0.7)),
+                url(block/dirt.png);
+            background-size: 160px 160px;
+            border: 5px solid #000000;
+        }
+
+        /*Configuracion del titulo (en la cabezera)*/
+        #titleLogo {
+            text-align: center;
+            color: #FFFF55;
+            padding: 10px;
+        }
+
+        #titleLogo img {
+            margin-top: -50px;
+        }
+
+        /*Estetica del contenedor de texto*/
+        #maincontent {
+            align-self: center;
+            text-align: center;
+            word-wrap: unset;
+            max-width: 1500px;
+            background-color: #C6C6C6;
+            height: auto;
+            margin: auto;
+            margin-top: 25px;
+            background-repeat: no-repeat;
+            text-overflow: clip;
+            padding: 5px;
+            border: 30px solid transparent;
+            border-image: url(images/borderResize1.png) 33% repeat round !important;
+        }
+
+        /*Estetica de los titulos (texto)*/
+        .title {
+            font-family: Minecraft_Alt !important;
+            font-size: 100px;
+        }
+
+        #maincontent p {
+            font-size: xx-large;
+        }
+
+        #maincontent img,
+        #maincontent iframe {
+            border: 5px solid #000000;
+            padding: 10px;
+            margin: 5px;
+        }
+
+        #maincontent .sticker {
+            display: inline-block;
+            border: none;
+            margin-left: 100px;
+            margin-right: 100px;
+        }
+
+        /*Estetica de la NavBar de la cabezera*/
+        #links {
+            max-width: 2000px;
+            margin: auto;
+            margin-top: 50px;
+            margin-bottom: 50px;
+            align-content: center;
+            text-align: center;
+            align-self: center;
+            display: flex;
+            word-wrap: unset;
+            font-size: x-large;
+        }
+
+        #links a {
+            border: 30px solid transparent;
+            padding: 10px;
+            text-decoration: none;
+            color: #FFFFFF !important;
+        }
+
+        #links a:link {
+            color: #FFFFFF !important;
+            border-image: url(images/borderButtonIdle.png) 33% repeat round !important;
+            background-image: url(images/backgroundButtonIdle.png);
+            background-size: 20px;
+            background-repeat: repeat;
+        }
+
+        #links a:hover {
+            color: #FFFFFF !important;
+            border-image: url(images/borderButtonSelect.png) 33% repeat round !important;
+            background-image: url(images/backgroundButtonSelect.png);
+            background-size: 20px;
+            background-repeat: repeat;
+        }
+
+        #links a:active {
+            color: #FFFFFF !important;
+            border-image: url(images/borderButtonSelected.png) 33% repeat round !important;
+            background-image: url(images/backgroundButtonSelected.png);
+            background-size: 24px;
+            background-repeat: repeat;
+        }
+
+        /*Configuracion del footer*/
+        footer {
+            font-size: x-large;
+            text-align: center;
+        }
+    </style> <!--Codigo CSS de la pagina-->
+
+    <script>
+        //Script para reproducir la musica
+        let audio = new Audio('1-08. Minecraft.mp3');
+        let beingPlayed = false;
+        function music(button) {
+            if (button.id == "play" && beingPlayed == false) {
+                audio.currentTime = 0
+                audio.play();
+                console.log(button.id);
+                beingPlayed = true;
+            }
+            if (button.id == "pause" && beingPlayed == true) {
+                audio.pause();
+                console.log(button.id);
+                beingPlayed = false;
+            }
+        }
+    </script> <!--Codigo Javascript de la pagina-->
+
+</head>
+
+<body>
+    <button class="button" id="play" onclick="music(this);"></button> <!--Boton de reproducir-->
+    <button class="button" id="pause" onclick="music(this);"></button> <!--Boton de Pausar-->
+    <header> <!--Encabezado-->
+        <div id="titleLogo">
+            <h1>Nuestro interes...</h1>
+            <a href="https://www.minecraft.net/"> <!--Logo del titulo (con un link a la pagina de Minecraft)-->
+                <img src="images/title.png">
+            </a>
+        </div>
+        <div id="links"> <!--NavBar a las diferentes paginas-->
+            <a href="main.html">Pagina Principal</a>
+            <br>
+            <a href="development.html">Historia de creacion de Juego</a>
+            <br>
+            <a href="linea-tiempo.html">Linea de Tiempo de Versiones (Java)</a>
+            <br>
+            <a href="popularity.html">¿Como se volvio famoso?</a>
+            <br>
+            <a href="2-verciones.html">Diferentes Ediciones</a>
+            <br>
+            <a href="Spinoff.html">Juegos Spinoff</a>
+        </div>
+    </header>
+
+    <section id="maincontent"> <!--Contenido Principal-->
+        <h1 class="title">...Porque Minecraft?</h1>
+        <img src="images/steveNalex.png" class="sticker">
+        <p>Minecraft es un juego increíblemente interesante por una variedad de razones, algunas de las cuales incluyen:
+        </p>
+        <br>
+        <p>
+            <b>Creatividad ilimitada:</b> Minecraft ofrece a los jugadores un mundo completamente abierto y sin límites
+            donde pueden construir casi cualquier cosa que puedan imaginar. Desde simples casas hasta enormes ciudades,
+            el único límite es la imaginación del jugador.
+        </p>
+        <iframe width="1280" height="720" src="https://www.youtube.com/embed/MmB9b5njVbA"></iframe>
+        <br>
+        <p>
+            <b>Exploración infinita:</b> El mundo de Minecraft es generado aleatoriamente y es prácticamente infinito,
+            lo que significa que siempre hay algo nuevo por descubrir. Desde biomas exóticos hasta estructuras generadas
+            aleatoriamente, cada nueva área explorada ofrece una experiencia única.
+        </p>
+        <br>
+        <p>
+            <b>Modificable:</b> Minecraft es altamente modificable, lo que significa que los jugadores pueden instalar
+            modificaciones (mods), packs de datos o texturas y mucho mas para cambiar o mejorar el juego según sus
+            preferencias. Esto amplía aún más las posibilidades y la longevidad del juego.
+        </p>
+        <img src="images/skull.gif" width="50%" height="50%">
+        <br>
+        <p>
+            <b>Juego educativo:</b> Minecraft ha demostrado ser una herramienta educativa poderosa, utilizada en
+            entornos escolares para enseñar matemáticas, historia, ciencias y más. Los jugadores pueden aprender sobre
+            la arquitectura mientras construyen, la geología mientras excavan y la lógica mientras diseñan circuitos.
+        </p>
+        <br>
+        <p>
+            <b>Comunidad activa:</b> Minecraft tiene una enorme comunidad de jugadores en línea que comparten
+            creaciones, mods, consejos y trucos. Esta comunidad activa crea un sentido de pertenencia y ofrece infinitas
+            oportunidades para interactuar y colaborar con otros jugadores.
+        </p>
+        <img src="images/Accessible.webp" width="50%" height="50%">
+        <br>
+        <p>
+            <b>Aventuras y desafíos:</b> Minecraft ofrece varios modos de juego, incluidos el modo supervivencia y el
+            modo creativo. El modo supervivencia desafía a los jugadores a sobrevivir en un mundo hostil, enfrentándose
+            a monstruos y buscando recursos, mientras que el modo creativo les permite construir libremente sin
+            restricciones.
+        </p>
+        <br>
+        <p>
+            <b>Actualizaciones regulares:</b> Mojang, la compañía detrás de Minecraft, continúa lanzando actualizaciones
+            periódicas que agregan nuevas características, biomas, criaturas y mecánicas de juego. Esto mantiene el
+            juego fresco y emocionante incluso para jugadores veteranos.
+        </p>
+        <img src="images/promoArt.png">
+        <br>
+        <p>
+            <b>Multiplataforma:</b> Minecraft está disponible en una amplia variedad de plataformas, incluyendo PC,
+            consolas de videojuegos, dispositivos móviles y más. Esto permite a los jugadores acceder al juego desde
+            casi cualquier lugar y jugar con amigos independientemente de la plataforma que utilicen.
+        </p>
+        <br>
+        <a href="https://minecraft.wiki"><p>Link a la Wiki de Minecraft</p></a> <!--Link a la Wiki de Minecraft-->
+        <img src="images/Wolf_Artwork.webp" class="sticker" width="20%" height="20%">
+        <img src="images/Pig_Artwork.webp" class="sticker" width="20%" height="20%">
+    </section>
+    <footer> <!--Footer-->
+        <p>&copy; ITR2024 | Pagina: Juan Mateo Frasinelli y Franco Alejandro Pedrazzi Nemer <br> contacto:
+            d46710280@alumnos.itr.edu.ar / d48457362@alumnos.itr.edu.ar</p>
+    </footer>
+</body>
+
+</html>

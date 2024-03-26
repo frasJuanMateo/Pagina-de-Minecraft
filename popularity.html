@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Minecraft</title>
+    <meta charset="UTF-8" /> <!--Define set de caracteres-->
+    <meta name="author" content="Juan Mateo Frasinelli / Franco Alejandro Pedrazzi Nemer">     <!--Define autor de la pagina-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--Define el tamaño de la ventana-->
+    <meta name="description" content="Sitio web acerca de nuestro interes personal: Minecraft.">
+    <!--Define descripcion de la pagina-->
+    <link rel="icon" href="Chicken_Artwork.webp"> <!--Define el icono de la pagina-->
+
+    <style>
+        /*Fuentes custom*/
+        @font-face {
+            font-family: Minecraft;
+            src: url("Minecraft.otf");
+        }
+
+        @font-face {
+            font-family: Minecraft_Alt;
+            src: url("MinecraftTen-VGORe.otf");
+        }
+
+        /*Codigo de los diferentes cursores (y aclaracion del renderizado de imagen)*/
+        * {
+            cursor: url(images/customcursor.png), default;
+            image-rendering: pixelated;
+        }
+
+        a:hover,
+        button:hover,
+        input:hover {
+            cursor: url(images/customcursor_hand.png), pointer;
+        }
+
+        a:active,
+        button:active,
+        input:active {
+            cursor: url(images/customcursor_hand_grab.png), grabbing;
+        }
+
+        p:hover,
+        h1:hover,
+        h2:hover,
+        h3:hover,
+        h4:hover,
+        h5:hover,
+        h6:hover {
+            cursor: url(images/customcursor_beam.png), text;
+        }
+
+        /*Configuracion general de la pagina*/
+        body {
+            background-image: url(images/block/moss_block.png);
+            background-size: 160px 160px;
+            height: auto;
+            margin: auto;
+            font-family: Minecraft;
+        }
+
+        /*Estetica de los botones de reproduccion de la musica*/
+        .button {
+            opacity: 30%;
+            position: fixed;
+            width: 100px;
+            height: 100px;
+            border: none;
+            background: transparent;
+        }
+
+        .button:hover {
+            transition: opacity 0.3s ease;
+            opacity: 100%;
+        }
+
+        .button img {
+            width: 100px;
+            height: 100px;
+        }
+
+        #pause {
+            background-image: url(images/Pause_Button_Idle.png);
+            background-size: 100px;
+        }
+
+        #play {
+            background-image: url(images/Play_Button_Idle.png);
+            background-size: 100px;
+        }
+
+        #pause:active {
+            background-image: url(images/Pause_Button_Select.png);
+        }
+
+        #play:focus {
+            background-image: url(images/Play_Button_Select.png);
+            opacity: 100%;
+        }
+
+        #pause {
+            margin-left: 110px;
+        }
+
+        /*Configuracion de la cabezera*/
+        header {
+            background:
+                linear-gradient(rgba(0, 0, 0, 0.7),
+                    rgba(0, 0, 0, 0.7)),
+                url(images/block/birch_log.png);
+            background-size: 160px 160px;
+            border: 5px solid #000000;
+        }
+
+        /*Configuracion del titulo (en la cabezera)*/
+        #titleLogo {
+            margin-top: none;
+            text-align: center;
+            color: #FFFF55;
+            padding: 10px;
+        }
+
+        /*Estetica del contenedor de texto*/
+        #maincontent {
+            align-self: center;
+            text-align: center;
+            word-wrap: unset;
+            max-width: 1500px;
+            background-color: #C6C6C6;
+            height: auto;
+            margin: auto;
+            margin-top: 25px;
+            background-repeat: no-repeat;
+            text-overflow: clip;
+            padding: 5px;
+            border: 30px solid transparent;
+            border-image: url(images/borderResize1.png) 33% repeat round !important;
+        }
+
+        .title {
+            font-family: Minecraft_Alt !important;
+            font-size: 100px;
+        }
+
+        #maincontent p {
+            font-size: xx-large;
+        }
+
+        #maincontent img,
+        #maincontent iframe {
+            border: 5px solid #000000;
+            padding: 10px;
+            margin: 5px;
+        }
+
+        .nonBorderImage {
+            border: none !important;
+        }
+
+        /*Estetica de la NavBar de la cabezera*/
+        #links {
+            max-width: 2000px;
+            margin: auto;
+            margin-top: 50px;
+            margin-bottom: 50px;
+            align-content: center;
+            text-align: center;
+            align-self: center;
+            display: flex;
+            word-wrap: unset;
+            font-size: x-large;
+        }
+
+        #links a {
+            border: 30px solid transparent;
+            padding: 10px;
+            text-decoration: none;
+            color: #FFFFFF !important;
+        }
+
+        #links a:link {
+            color: #FFFFFF !important;
+            border-image: url(images/borderButtonIdle.png) 33% repeat round !important;
+            background-image: url(images/backgroundButtonIdle.png);
+            background-size: 20px;
+            background-repeat: repeat;
+        }
+
+        #links a:hover {
+            color: #FFFFFF !important;
+            border-image: url(images/borderButtonSelect.png) 33% repeat round !important;
+            background-image: url(images/backgroundButtonSelect.png);
+            background-size: 20px;
+            background-repeat: repeat;
+        }
+
+        #links a:active {
+            color: #FFFFFF !important;
+            border-image: url(images/borderButtonSelected.png) 33% repeat round !important;
+            background-image: url(images/backgroundButtonSelected.png);
+            background-size: 24px;
+            background-repeat: repeat;
+        }
+
+        /*Configuracion del footer*/
+        footer {
+            font-size: x-large;
+            text-align: center;
+        }
+    </style> <!--Codigo CSS de la pagina-->
+
+    <script>
+        //Script para reproducir la musica
+        let audio = new Audio('1-08. Minecraft.mp3');
+        let beingPlayed = false;
+        function music(button) {
+            if (button.id == "play" && beingPlayed == false) {
+                audio.currentTime = 0
+                audio.play();
+                console.log(button.id);
+                beingPlayed = true;
+            }
+            if (button.id == "pause" && beingPlayed == true) {
+                audio.pause();
+                console.log(button.id);
+                beingPlayed = false;
+            }
+        }
+    </script> <!--Codigo Javascript de la pagina-->
+
+</head>
+
+<body>
+    <button class="button" id="play" onclick="music(this);"></button> <!--Boton de reproducir-->
+    <button class="button" id="pause" onclick="music(this);"></button> <!--Boton de Pausar-->
+    <header> <!--Encabezado-->
+        <div id="titleLogo">
+            <a href="https://www.minecraft.net/"> <!--Logo del titulo (con un link a la pagina de Minecraft)-->
+                <img src="images/title.png">
+            </a>
+        </div>
+        <div id="links"> <!--NavBar a las diferentes paginas-->
+            <a href="main.html">Pagina Principal</a>
+            <br>
+            <a href="development.html">Historia de creacion de Juego</a>
+            <br>
+            <a href="linea-tiempo.html">Linea de Tiempo de Versiones (Java)</a>
+            <br>
+            <a href="popularity.html">¿Como se volvio famoso?</a>
+            <br>
+            <a href="2-verciones.html">Diferentes Ediciones</a>
+            <br>
+            <a href="Spinoff.html">Juegos Spinoff</a>
+        </div>
+    </header>
+
+    <section id="maincontent"> <!--Contenido Principal-->
+        <h1 class="title">...Como se volvio famoso?</h1>
+        <p>Minecraft, un fenómeno cultural en el mundo de los videojuegos, ha logrado cautivar a millones de jugadores
+            en todo el mundo desde su lanzamiento en 2009. Su popularidad se ha consolidado no solo en el ámbito de los
+            videojuegos, sino también en plataformas de contenido como YouTube, donde ha desempeñado un papel
+            fundamental en el crecimiento de muchos canales y comunidades en línea.
+        </p>
+        <img src="images/Floating_Island_Artwork_3.webp" class="nonBorderImage">
+        <br>
+        <p>La clave de su éxito radica en su enfoque único y altamente adaptable que permite a los jugadores explorar,
+            crear y compartir sus experiencias en un mundo virtual sin límites. En Minecraft, los jugadores se
+            encuentran inmersos en un vasto mundo generado proceduralmente compuesto por bloques tridimensionales. Desde
+            su inicio, el juego se ha convertido en una plataforma para la creatividad, donde los jugadores pueden
+            construir impresionantes estructuras, explorar paisajes infinitos y enfrentarse a desafíos únicos.
+        </p>
+        <img src="images/Floating_Island_Artwork_2.webp" class="nonBorderImage" style="float:right;">
+        <br>
+        <p>Una de las razones principales de la popularidad de Minecraft en YouTube es su capacidad para generar
+            contenido diverso y entretenido. Los jugadores pueden compartir sus aventuras, tutoriales de construcción,
+            desafíos de supervivencia y mucho más. Esta versatilidad ha permitido a creadores de contenido de todas las
+            edades y estilos encontrar su nicho en la comunidad de Minecraft en YouTube.
+        </p>
+        <br>
+        <p>Además, Minecraft ha sido un terreno fértil para la creación de contenido para niños y familias. Muchos
+            padres ven en Minecraft una forma segura y educativa para que sus hijos jueguen y aprendan en línea. Los
+            vídeos relacionados con Minecraft suelen ser vistos como contenido apropiado para todas las edades, lo que
+            ha contribuido a su popularidad en YouTube como una opción de entretenimiento familiar.
+        </p>
+        <img src="images/Floating_Island_Artwork_1.webp" class="nonBorderImage" style="float:left;">
+        <br>
+        <p>El impacto de Minecraft en YouTube ha sido significativo en términos de crecimiento de canales y comunidades.
+            Muchos YouTubers han construido sus carreras en torno al juego, creando contenido regular que atrae a
+            millones de espectadores. Además, eventos como torneos, construcciones en equipo y series de juego
+            colaborativas han reunido a grandes audiencias en la plataforma.
+        </p>
+        <br>
+        <p>En resumen, Minecraft ha alcanzado un estatus icónico en YouTube gracias a su naturaleza versátil, su
+            capacidad para fomentar la creatividad y su atractivo multiplataforma. A medida que la comunidad de
+            Minecraft en YouTube continúa creciendo, el juego sigue siendo una fuente inagotable de entretenimiento y
+            creatividad para jugadores y espectadores por igual.
+        </p>
+        <img src="images/Floating_Island_Artwork_4.webp" class="nonBorderImage">
+        <br>
+        <a href="https://minecraft.wiki"><p>Link a la Wiki de Minecraft</p></a> <!--Link a la Wiki de Minecraft-->
+    </section>
+    <footer> <!--Footer-->
+        <p>&copy; ITR2024 | Pagina: Juan Mateo Frasinelli y Franco Alejandro Pedrazzi Nemer <br> contacto:
+            d46710280@alumnos.itr.edu.ar / d48457362@alumnos.itr.edu.ar</p>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <title>Minecraft</title>
+    <meta charset="UTF-8" /> <!--Define set de caracteres-->
+    <meta name="author" content="Juan Mateo Frasinelli / Franco Alejandro Pedrazzi Nemer">
+    <!--Define autor de la pagina-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--Define el tamaño de la ventana-->
+    <meta name="description" content="Sitio web acerca de nuestro interes personal: Minecraft.">
+    <!--Define descripcion de la pagina-->
+    <link rel="icon" href="Chicken_Artwork.webp"> <!--icono de la pagina-->
+    <style>
+        @font-face {
+            font-family: Minecraft;
+            src: url("Minecraft.otf");
+        }
+        
+        * {
+            cursor: url(images/customcursor.png), default;
+            image-rendering: pixelated;
+        }
+
+        a:hover,
+        button:hover,
+        input:hover {
+            cursor: url(images/customcursor_hand.png), pointer;
+        }
+
+        a:active,
+        button:active,
+        input:active {
+            cursor: url(images/customcursor_hand_grab.png), grabbing;
+        }
+
+        p:hover,
+        h1:hover,
+        h2:hover,
+        h3:hover,
+        h4:hover,
+        h5:hover,
+        h6:hover {
+            cursor: url(images/customcursor_beam.png), text;
+        }
+
+        body {
+            background-image: url(images/stone.png);
+            height: auto;
+            margin: auto;
+            font-family: Minecraft;
+        }
+
+        header {
+            background:
+                linear-gradient(rgba(0, 0, 0, 0.7),
+                    rgba(0, 0, 0, 0.7)),
+                url(images/stone.png);
+            border: 5px solid #000000;
+        }
+
+        #titleLogo {
+            margin-top: none;
+            text-align: center;
+            color: #FFFF55;
+            padding: 10px;
+        }
+
+        footer {
+            text-align: center;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 80%;
+
+        }
+
+        td {
+            padding: 10px;
+            /* Ajusta el valor según el espacio deseado */
+        }
+
+        #maincontent {
+            align-self: center;
+            /*display: flex;*/
+            text-align: center;
+            word-wrap: unset;
+            max-width: 1000px;
+            background-image: url(images/block/obsidian.png);
+            background-size: 160px 160px;
+            height: auto;
+            margin: auto;
+            text-overflow: clip;
+        }
+
+        #links {
+            max-width: 2000px;
+            margin: auto;
+            margin-top: 50px;
+            margin-bottom: 50px;
+            align-content: center;
+            text-align: center;
+            align-self: center;
+            display: flex;
+            word-wrap: unset;
+            font-size: x-large;
+        }
+
+        #links a {
+            border: 30px solid transparent;
+            padding: 10px;
+            text-decoration: none;
+            color: #FFFFFF !important;
+        }
+
+        a:link {
+            color: #FFFFFF !important;
+            border-image: url(images/borderButtonIdle.png) 33% repeat round !important;
+            background-image: url(images/backgroundButtonIdle.png);
+        }
+
+        a:hover {
+            color: #FFFFFF !important;
+            border-image: url(images/borderButtonSelect.png) 33% repeat round !important;
+            background-image: url(images/backgroundButtonSelect.png);
+        }
+
+        a:active {
+            color: #FFFFFF !important;
+            border-image: url(images/borderButtonSelected.png) 33% repeat round !important;
+            background-image: url(images/backgroundButtonSelected.png);
+        }
+
+        #maincontent a {
+            font-size: 100px;
+        }
+
+        .texto {
+            padding: 15px;
+            color: black;
+            width: 80%;
+            background: url(images/cartel.jpeg);
+            position: relative;
+            margin: auto;
+
+        }
+
+        .texto1 {
+            padding: 15px;
+            color: black;
+            width: 80%;
+            background:
+                linear-gradient(rgba(100, 0, 100, 0.5),
+                    rgba(100, 0, 100, 0.5)),
+                url(images/cartel.jpeg);
+            position: relative;
+            margin: auto;
+
+        }
+
+        .texto2 {
+            padding: 15px;
+            color: black;
+            width: 80%;
+            background:
+                linear-gradient(rgba(100, 0, 0, 0.5),
+                    rgba(100, 0, 0, 0.5)),
+                url(images/cartel.jpeg);
+            position: relative;
+            margin: auto;
+        }
+
+        .texto3 {
+            padding: 15px;
+            color: black;
+            width: 80%;
+            background:
+                linear-gradient(rgba(140, 140, 255, 0.5),
+                    rgba(140, 140, 255, 0.5)),
+                url(images/cartel.jpeg);
+            position: relative;
+            margin: auto;
+
+        }
+
+        .texto4 {
+            padding: 15px;
+            color: black;
+            width: 80%;
+            background:
+                linear-gradient(rgba(0, 100, 0, 0.5),
+                    rgba(0, 100, 0, 0.5)),
+                url(images/cartel.jpeg);
+            position: relative;
+            margin: auto;
+        }
+
+        .Delete {
+            background-clip: content-box;
+        }
+
+        .title {
+            font-family: Minecraft_Alt !important;
+            font-size: 50px;
+        }
+    </style> <!--Codigo CSS de la pagina-->
+
+    <script> //javascript </script> <!--Codigo Javascript de la pagina-->
+
+</head>
+
+<body>
+    <header> <!--Encabezado-->
+        <div id="titleLogo">
+            <img src="images/title.png">
+        </div>
+        <div id="links">
+            <a href="main.html">Pagina Principal</a>
+            <br>
+            <a href="development.html">Historia de creacion de Juego</a>
+            <br>
+            <a href="linea-tiempo.html">Linea de Tiempo de Versiones (Java)</a>
+            <br>
+            <a href="popularity.html">¿Como se volvio famoso?</a>
+            <br>
+            <a href="2-verciones.html">Diferentes Ediciones</a>
+            <br>
+            <a href="Spinoff.html">Juegos Spinoff</a>
+        </div>
+    </header>
+    <div id="maincontent"> <!--Contenido Principal-->
+        <img src="images/Spinofs.jpeg" style="height: 75%; width: 75%;" class="texto">
+        <br>
+        <br>
+        <h3 class="texto">Minecarft tiene varios spinofs y aqui vamos a hablar de todos ellos de una forma resumida para
+            que tengas una idea y puedas jugarlos </h3>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <img src="images/minecraftStorymod.jpeg" style="height: 75%; width: 75%;" class="texto1">
+        <br>
+        <br>
+        <h3 class="texto1">
+            En Minecraft Story Mode, asumes el papel de Jesse, un personaje que junto con sus amigos se embarca en una
+            misión épica para proteger su mundo de una fuerza malévola conocida como "The Wither Storm". Durante tu
+            viaje, te encontrarás con personajes carismáticos, explorarás entornos variados y resolverás desafiantes
+            acertijos.
+        </h3>
+        <br>
+        <br>
+        <h3 class="texto1">
+            El juego está lleno de momentos emocionantes donde tus decisiones afectarán la historia y las relaciones con
+            otros personajes. Puedes personalizar a Jesse con diferentes aspectos y disfrutar de un diálogo lleno de
+            humor y acción. Además, desbloquearás nuevas habilidades a medida que avances en la aventura, lo que te
+            permitirá enfrentar desafíos cada vez más difíciles.
+        </h3>
+
+        <br>
+        <br>
+        <img src="images/MinecraftdDungeons.jpeg" style="height: 75%; width: 75%;" class="texto2">
+        <br>
+        <br>
+        <h3 class="texto2">
+            Minecraft Dungeons es un juego de acción y aventuras que te transporta al universo de Minecraft en una nueva
+            experiencia. En lugar de construir y explorar libremente como en el juego original, aquí te enfrentas a
+            mazmorras generadas aleatoriamente llenas de enemigos, tesoros y desafíos.
+        </h3>
+        <br>
+        <br>
+        <h3 class="texto2">
+            Controlas a un héroe que debe luchar contra hordas de monstruos, utilizar habilidades especiales y encontrar
+            equipo poderoso para avanzar. El juego ofrece diferentes clases de personajes, como guerreros, arqueros,
+            magos y más, cada uno con habilidades únicas que puedes mejorar a medida que avanzas.
+        </h3>
+        <br>
+        <br>
+        <h3 class="texto2">
+            El aspecto cooperativo también es destacado, ya que puedes jugar en línea o en modo local con amigos,
+            trabajando juntos para superar las mazmorras más difíciles y obtener recompensas exclusivas
+        </h3>
+        <br>
+        <br>
+        <img src="images/minecraftLegends.jpeg" style="height: 75%; width: 75%;" class="texto3">
+        <br>
+        <br>
+        <h3 class="texto3">
+            Minecraft legends es un juego de estrategia donde tienes que defender el overworld de los piglins del nether
+            uniendo a las criaturas del mundo. </h3>
+        <br>
+        <br>
+        <h3 class="texto3">
+            En Minecraft Legends tendras que viajar por el mundo protegiendo las aldeas y destrullendo las colonias de
+            los piglins con tus tropas y preparando fuertes para defenderte, ademas tendras que defender las tierras de
+            tus aliados los zombies,creepers y esqueletos.
+        </h3>
+        <br>
+        <br>
+        <h3 class="texto3">
+            ademas tendras que investigar el mundo para conseguir nuevas tropas y conseguir mejoras para tu personage.
+        </h3>
+        <br>
+        <br>
+        <img src="images/minecrafth_earth.jpg" style="height: 75%; width: 75%;" class="texto4">
+        <br>
+        <br>
+        <h3 class="texto4">
+            Minecraft Earth es un juego de realidad aumentada desarrollado por Mojang Studios, la misma compañía detrás
+            de Minecraft. En este juego, los jugadores pueden explorar un mundo virtual basado en el universo de
+            Minecraft, pero integrado con el mundo real a través de la tecnología de realidad aumentada.</h3>
+        <br>
+        <br>
+        <h3 class="texto4">
+            Los jugadores pueden recolectar recursos, como bloques y materiales, al explorar el mundo real y participar
+            en diferentes actividades y desafíos. Estos recursos se utilizan luego para construir estructuras, crear
+            herramientas y objetos, y personalizar su experiencia en el juego.
+        </h3>
+        <br>
+        <br>
+        <h3 class="texto4">
+            ademas tendras que investigar el mundo para conseguir nuevas tropas y conseguir mejoras para tu personage.
+        </h3>
+        <br>
+        <br>
+    </div>
+    <footer> <!--Footer-->
+        <p>&copy; ITR2024 | Pagina: Juan Mateo Frasinelli y Franco Alejandro Pedrazzi Nemer <br> contacto:
+            d46710280@alumnos.itr.edu.ar / d48457362@alumnos.itr.edu.ar</p>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <title>Minecraft</title>
+    <meta charset="UTF-8" /> <!--Define set de caracteres-->
+    <meta name="author" content="Juan Mateo Frasinelli / Franco Alejandro Pedrazzi Nemer">
+    <!--Define autor de la pagina-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--Define el tamaño de la ventana-->
+    <meta name="description" content="Sitio web acerca de nuestro interes personal: Minecraft.">
+    <!--Define descripcion de la pagina-->
+    <link rel="icon" href="Chicken_Artwork.webp" id="icono"> <!--Define el icono de la pagina-->
+    <style>
+        * {
+            cursor: url(images/customcursor.png), default;
+        }
+
+        a:hover,
+        button:hover,
+        input:hover {
+            cursor: url(images/customcursor_hand.png), pointer;
+        }
+
+        a:active,
+        button:active,
+        input:active {
+            cursor: url(images/customcursor_hand_grab.png), grabbing;
+        }
+
+        p:hover,
+        h1:hover,
+        h2:hover,
+        h3:hover,
+        h4:hover,
+        h5:hover,
+        h6:hover {
+            cursor: url(images/customcursor_beam.png), text;
+        }
+
+        @font-face {
+            font-family: Minecraft;
+            src: url("Minecraft.otf");
+        }
+
+        body {
+            background-image: url(images/stone.png);
+            height: auto;
+            margin: auto;
+            font-family: Minecraft;
+        }
+
+        header {
+            background:
+                linear-gradient(rgba(0, 0, 0, 0.7),
+                    rgba(0, 0, 0, 0.7)),
+                url(images/stone.png);
+            border: 5px solid #000000;
+        }
+
+        #titleLogo {
+            margin-top: none;
+            text-align: center;
+            color: #FFFF55;
+            padding: 10px;
+        }
+
+        footer {
+            text-align: center;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 80%;
+
+        }
+
+        td {
+            padding: 10px;
+            /* Ajusta el valor según el espacio deseado */
+        }
+
+        #maincontent {
+            align-self: center;
+            /*display: flex;*/
+            text-align: center;
+            word-wrap: unset;
+            max-width: 1000px;
+            background-image: url(images/fondo-degradado.jfif);
+            background-size: 100%;
+            height: auto;
+            margin: auto;
+            text-overflow: clip;
+        }
+
+        #links {
+            max-width: 2000px;
+            margin: auto;
+            margin-top: 50px;
+            margin-bottom: 50px;
+            align-content: center;
+            text-align: center;
+            align-self: center;
+            display: flex;
+            word-wrap: unset;
+            font-size: x-large;
+        }
+
+        #links a {
+            border: 30px solid transparent;
+            padding: 10px;
+            text-decoration: none;
+            color: #FFFFFF !important;
+        }
+
+        #links a:link {
+            color: #FFFFFF !important;
+            border-image: url(images/borderButtonIdle.png) 33% repeat round !important;
+            background-image: url(images/backgroundButtonIdle.png);
+            background-size: 20px;
+            background-repeat: repeat;
+        }
+
+        #links a:hover {
+            color: #FFFFFF !important;
+            border-image: url(images/borderButtonSelect.png) 33% repeat round !important;
+            background-image: url(images/backgroundButtonSelect.png);
+            background-size: 20px;
+            background-repeat: repeat;
+        }
+
+        #links a:active {
+            color: #FFFFFF !important;
+            border-image: url(images/borderButtonSelected.png) 33% repeat round !important;
+            background-image: url(images/backgroundButtonSelected.png);
+            background-size: 24px;
+            background-repeat: repeat;
+        }
+
+        #Egg img {
+            src: url(images/egg.png);
+            position: relative !important;
+        }
+
+        #Egg:hover {
+            position: relative;
+            height: 120px;
+            content: url(images/egg_estirado.png);
+        }
+
+        #maincontent a {
+            font-size: 100px;
+        }
+
+        .texto {
+            background-image: url(images/cartel.jpeg);
+            padding: 10px;
+            width: 80%;
+            height: auto;
+            margin: auto;
+
+        }
+
+        .java {
+
+            color: black;
+            padding: 15px;
+            background:
+                linear-gradient(rgba(100, 0, 0, 0.5),
+                    rgba(100, 0, 0, 0.5)),
+                url(images/cartel.jpeg);
+            width: 50%;
+            position: relative;
+            left: 60px;
+        }
+
+        .bedrock {
+            padding: 15px;
+            color: black;
+            width: 50%;
+            background:
+                linear-gradient(rgba(0, 0, 100, 0.5),
+                    rgba(0, 0, 100, 0.5)),
+                url(images/cartel.jpeg);
+            position: relative;
+            left: 140px;
+        }
+
+        .Delete {
+            background-clip: content-box;
+        }
+    </style> <!--Codigo CSS de la pagina-->
+
+    <script> //javascript </script> <!--Codigo Javascript de la pagina-->
+
+</head>
+
+<body>
+    <header> <!--Encabezado-->
+        <div id="titleLogo">
+            <img src="images/title.png" id="title">
+        </div>
+        <div id="links">
+            <a href="main.html">Pagina Principal</a>
+            <br>
+            <a href="development.html">Historia de creacion de Juego</a>
+            <br>
+            <a href="linea-tiempo.html">Linea de Tiempo de Versiones (Java)</a>
+            <br>
+            <a href="popularity.html">¿Como se volvio famoso?</a>
+            <br>
+            <a href="2-verciones.html">Diferentes Ediciones</a>
+            <br>
+            <a href="Spinoff.html">Juegos Spinoff</a>
+        </div>
+    </header>
+    <div id="maincontent"> <!--Contenido Principal-->
+        <img src="images/JvsB.jpg" style="height: 75%; width: 75%;" class="texto Img">
+        <br>
+        <br>
+        <h3 class="texto">Minecraft Java vs. Bedrock: El debate es común entre jugadores de Windows 10 y se basa en la
+            disponibilidad de cada versión para diferentes plataformas. En Windows 10, se puede elegir entre ambas
+            versiones, pero en otras plataformas no hay opción.
+        </h3>
+        <br>
+        <br>
+        <br>
+        <br>
+        <h3 class="texto">
+            Diferencias entre Java y Bedrock Edition
+        </h3>
+
+        <br>
+        <br>
+        </h3>
+        <h4>
+            <table border="0">
+                <tr>
+                    <td class="java">Minecraft: Java Edition (Java)</td>
+                    <td class="bedrock"> Minecraft: Bedrock Edition (Bedrock)</td>
+                </tr>
+            </table>
+            <br>
+            <tr>
+                <table border="0">
+                    <td class="java">
+                        Lanzada en 2009 y desarrollada en Java, Java Edition utiliza el formato de mundo Anvil y tiene
+                        un sistema de comandos más complejo que incluye características como /stats y /team. </td>
+                    <td class="bedrock">
+                        lanzada en 2017, Bedrock Edition reúne múltiples plataformas en una base de código común y
+                        utiliza el formato LevelDB para los mundos. </td>
+            </tr>
+            </table>
+            <br>
+            <br>
+
+            <img src="images/Servers-dlc.jpeg" class="texto Img">
+            <br>
+            <br>
+            <h3 class="texto">
+                Las cosas a las que puede acceder Java y Bedrock
+            </h3>
+            <br>
+            <br>
+            <h4>
+                <table border="0">
+                    <td class="java">
+                        Además, Java Edition permite a los jugadores crear servidores personalizados y modificar el
+                        juego a un nivel más profundo gracias a su accesibilidad a través de la programación en Java
+                    </td>
+                    <td class="bedrock">
+                        Bedrck posee variedad de expansiones disponibles en la tienda del juego para personalizar
+                        aspectos, texturas, mundos y añadir nuevas mecánicas a Minecraft Bedrock Edition.
+                        </tr>
+                </table>
+            </h4>
+            <br>
+            <br>
+            <h3 class="texto">
+                Diferencias en la Jugabilidad
+            </h3>
+            <br>
+            <br>
+            <h4>
+                <table border="0">
+                    <td class="java">
+                        Ofrece una jugabilidad más tradicional y profunda, con mayor compatibilidad con mods y
+                        características avanzadas. Sin embargo, puede requerir más recursos de hardware y ser menos
+                        eficiente en dispositivos de gama baja debido a su diseño más antiguo y al uso de Java como
+                        lenguaje de programación.</td>
+
+                    <td class="bedrock">
+                        Ofrece una jugabilidad más moderna y accesible, con mayor flexibilidad en la entrada del jugador
+                        y una optimización que suele funcionar mejor en hardware de gama baja. <br> Además, su diseño
+                        modular y la división de renderizado y activación de piezas contribuyen a una mayor eficiencia
+                        en dispositivos con recursos limitados.</td>
+                    </tr>
+                    <br>
+                    <br>
+
+                </table>
+                <img src="images/ModsvsFPS.jpeg" class="texto Img">
+                <br>
+                <br>
+            </h4>
+            <h3 class="texto">
+                Diferencias entre Mecanicas a la hora de jugar
+            </h3>
+            <br>
+            <br>
+            <h3 class="texto">
+                Redstone
+            </h3>
+            <br>
+            <br>
+            <h4>
+                <table border="0">
+                    <td class="java">
+                        El comportamiento de la redstone más predecible, basado en la simulación de energía eléctrica.
+                        La potencia de la señal se debilita con la distancia y a través de componentes como los
+                        repetidores.
+                        los mecanismos ofrecen una amplia variedad de componentes y mecanismos avanzados desarrollados
+                        por la comunidad. </td>
+
+                    <td class="bedrock">
+                        El comportamiento de la redstone puede comportarse de manera diferente debido al motor del
+                        juego, con diferencias sutiles en cómo se propagan las señales y funcionan algunos circuitos.
+                        ,algunos diseños específicos de Java pueden no funcionar igual debido a diferencias en la
+                        implementación de Redstone, pero ha mejorado con el tiempo.
+                </table>
+            </h4>
+            <br>
+            <br>
+            <img src="images/redStoneJvsB.jpeg" class="texto Img">
+            <br>
+            <br>
+            <h3 class="texto">Mecánicas de combate</h3>
+            <br>
+            <br>
+            <h4>
+                <table border="0">
+                    <td class="java">El sistema de combate en Java Edition es más complejo y detallado. No se puede
+                        utilizar el "spam-clicking" para atacar, lo que puede cambiar la dinámica de las peleas y
+                        enfrentamientos. </td>
+
+                    <td class="bedrock">
+                        En Bedrock Edition, el sistema de combate es más simplificado y se basa en un temporizador de
+                        ataque más uniforme.Incluye la posibilidad de usar técnicas como el "spam-clicking" (hacer clic
+                        rápidamente) para atacar, así como movimientos especiales con armas y herramientas. </tr>
+                </table>
+            </h4>
+            <br>
+            <br>
+            <img src="images/pvp.jpg" class="texto Img">
+            <br>
+            <br>
+            <h3 class="texto">Ciclo de actualizaciones</h3>
+            <br>
+            <br>
+            <h4>
+                <table border="0">
+                    <td class="java"> Suele recibir actualizaciones más frecuentes y tempranas, incluyendo nuevas
+                        características, mecánicas y contenidos antes que Bedrock Edition.
+                    </td>
+
+                    <td class="bedrock">
+                        Aunque también recibe actualizaciones periódicas, estas pueden tardar un poco más en
+                        implementarse en comparación con Java Edition.</tr>
+                </table>
+            </h4>
+            <br>
+            <br>
+            <img src="images/carrera.jpeg" class="texto Img ">
+            <br>
+            <br>
+
+    </div>
+    <footer> <!--Footer-->
+        <p>&copy; ITR2024 | Pagina: Juan Mateo Frasinelli y Franco Alejandro Pedrazzi Nemer <br> contacto:
+            d46710280@alumnos.itr.edu.ar / d48457362@alumnos.itr.edu.ar</p> <img src="images/egg.png" id="Egg">
+    </footer>
+    <script>
+        let hell = []
+        let index = 0
+        let audio = new Audio("Siberia Hell Sounds.mp4")
+        let title = document.getElementById("title")
+        let images = document.getElementsByClassName("Img")
+        let ico = document.getElementById("icono")
+        let javas = document.getElementsByClassName("java")
+        let bedrocks = document.getElementsByClassName("bedrock")
+        let textos = document.getElementsByClassName("texto")
+        let link = document.getElementById("links")
+        let subfondo = document.getElementById("maincontent")
+        let time = 0
+        let bot = document.getElementById("Egg")
+        let hampter = false
+        console.log("The start")
+        function Hamtershell() {
+            time++
+
+            for (let i = 0; i < textos.length; i++) {
+                textos[i].innerHTML += " DEAD"
+            }
+            for (let i = 0; i < javas.length; i++) {
+                javas[i].innerHTML += " DEAD"
+                bedrocks[i].innerHTML += " DEAD"
+
+            }
+
+
+
+            if (time == 200 && hampter == false) {
+                for (let i = 0; i < images.length; i++) {
+                    images[i].src = "images/hampterbrine.png"
+                    images[i].style.height = "500px";
+
+                }
+                hampter = true
+                time = 0
+            }
+
+            if (time == 30 && hampter == true) {
+                for (let i = 0; i < images.length; i++) {
+                    images[i].src = "images/estatica.gif"
+
+                }
+                audio.play()
+                hampter = false
+                time = 0
+
+            }
+        }
+
+
+        bot.addEventListener("click", e => {
+            document.body.style.backgroundImage = "url('images/lava.gif')";
+            document.body.style.backgroundSize = "160px 160px";
+            subfondo.style.backgroundImage = "url('images/block/netherrack.png')";
+            subfondo.style.backgroundSize = "160px 160px";
+            audio.play()
+            icono.href = "images/hampterbrine.png";
+            title.src = "images/HampterBrineLogo.png";
+            for (let i = 0; i < textos.length; i++) {
+                textos[i].innerHTML = "DEAD"
+
+            }
+            for (let i = 0; i < javas.length; i++) {
+                javas[i].innerHTML = "DEAD"
+                bedrocks[i].innerHTML = "DEAD"
+            }
+            for (let i = 0; i < images.length; i++) {
+                images[i].src = "images/estatica.gif"
+
+            }
+            setInterval(Hamtershell, 1)
+        })
+    </script>
+</body>
+
+</html>
